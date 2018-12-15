@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <constant name="struts.objectFactory" value="spring"></constant>
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.ui.theme" value="simple"/>
+
+    <package name="default" extends="struts-default">
+        <!-- Accueil -->
+        <default-action-ref name="home" />
+        <action name="home">
+            <result>/WEB-INF/jsp/index.jsp</result>
+        </action>
+
+        <!-- Books -->
+
+        <action name="allbooks"
+                class="com.library.action.BooksAction"
+                method="findAllBooks">
+            <result name="success">/WEB-INF/jsp/books/books.jsp</result>
+            <result name="error">/WEB-INF/jsp/error.jsp</result>
+        </action>
+
+        <action name="book"
+                class="com.library.action.BooksAction"
+                method="getBookById">
+            <result name="success">/WEB-INF/jsp/books/book.jsp</result>
+            <result name="error">/WEB-INF/jsp/error.jsp</result>
+        </action>
+
+        <action name="createbook"
+                class="com.library.action.BooksAction"
+                method="doCreate">
+            <result name="input">WEB-INF/jsp/books/newbook.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">book</param>
+                <param name="id">${books.book_id}</param>
+            </result>
+        </action>
+
+        <action name="searchbook"
+                class="com.library.action.BooksAction"
+                method="searchBook">
+            <result name="input">/WEB-INF/jsp/books/searchbook.jsp</result>
+            <result name="error">WEB-INF/jsp/error.jsp</result>
+        </action>
+
+        <!-- User -->
+        <action name="user"
+                class="com.library.action.UsersAction"
+                method="getUserById">
+            <result name="success">/WEB-INF/jsp/users/user.jsp</result>
+            <result name="error">/WEB-INF/jsp/error.jsp</result>
+        </action>
+
+        <action name="createuser"
+                class="com.library.action.UsersAction"
+                method="doCreate">
+            <result name="input">/WEB-INF/jsp/users/newuser.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">user</param>
+                <param name="id">${users.user_id}</param>
+            </result>
+            <result name="error">/WEB-INF/jsp/error.jsp</result>
+        </action>
+
+        <action name="login"
+                class="com.library.action.UsersAction"
+                method="doLogin">
+            <result name="input">WEB-INF/jsp/users/login.jsp</result>
+            <result name="success" type="redirectAction">home</result>
+            <result name="error">WEB-INF/jsp/error.jsp</result>
+        </action>
+
+        <action name="logout"
+                class="com.library.action.UsersAction"
+                method="doLogout">
+            <result name="success" type="redirectAction">home</result>
+        </action>
+
+        <!-- Borrow -->
+
+        <action name="createborrow"
+                class="com.library.action.BorrowsAction"
+                method="doCreate">
+            <result name="input">WEB-INF/jsp/borrows/newborrow.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">borrow</param>
+                <param name="id">${borrows.borrow_Id}</param>
+            </result>
+            <result name="error">WEB-INF/jsp/error.jsp</result>
+        </action>
+
+
+        <action name="borrow"
+                class="com.library.action.BorrowsAction"
+                method="getById">
+            <result name="success">WEB-INF/jsp/borrows/borrow.jsp</result>
+            <result name="error">WEB-INF/jsp/error.jsp</result>
+        </action>
+
+        <action name="allborrows"
+                class="com.library.action.BorrowsAction"
+                method="getAllBorrows">
+            <result name="success">WEB-INF/jsp/borrows/borrows.jsp</result>
+        </action>
+
+        <action name="extendborrow"
+        class="com.library.action.BorrowsAction"
+        method="extend">
+            <result name="input">WEB-INF/jsp/borrows/extend.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">borrow</param>
+                <param name="id">${borrows.borrow_Id}</param>
+            </result>
+            <result name="error">WEB-INF/jsp/borrows/extend.jsp</result>
+        </action>
+
+    </package>
+</struts>

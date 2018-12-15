@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" if-exists="true" version="2.1">
+  <!--
+
+Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
+Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+Généré le : 2018.05.11 à 11:14:22 PM CEST 
+
+  -->
+  <bindings xmlns:tns="http://libraryservice/borrows" if-exists="true" scd="x-schema::tns">
+    <schemaBindings map="false">
+      <package name="com.library.wsdl.borrows"/>
+    </schemaBindings>
+    <bindings if-exists="true" scd="tns:getBorrowByIdRequest">
+      <class ref="com.library.wsdl.borrows.GetBorrowByIdRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getBorrowByIdResponse">
+      <class ref="com.library.wsdl.borrows.GetBorrowByIdResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:borrowInfo">
+      <class ref="com.library.wsdl.borrows.BorrowInfo"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:addBorrowRequest">
+      <class ref="com.library.wsdl.borrows.AddBorrowRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:addBorrowResponse">
+      <class ref="com.library.wsdl.borrows.AddBorrowResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:serviceStatus">
+      <class ref="com.library.wsdl.borrows.ServiceStatus"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:extendBorrowRequest">
+      <class ref="com.library.wsdl.borrows.ExtendBorrowRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:extendBorrowResponse">
+      <class ref="com.library.wsdl.borrows.ExtendBorrowResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:deleteBorrowRequest">
+      <class ref="com.library.wsdl.borrows.DeleteBorrowRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:deleteBorrowResponse">
+      <class ref="com.library.wsdl.borrows.DeleteBorrowResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getAllBorrowsRequest">
+      <class ref="com.library.wsdl.borrows.GetAllBorrowsRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getAllBorrowsResponse">
+      <class ref="com.library.wsdl.borrows.GetAllBorrowsResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:userInfo">
+      <class ref="com.library.wsdl.borrows.UserInfo"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:bookInfo">
+      <class ref="com.library.wsdl.borrows.BookInfo"/>
+    </bindings>
+  </bindings>
+</bindings>

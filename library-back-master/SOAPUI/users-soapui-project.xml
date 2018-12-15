@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="9cd03668-61dd-4076-9597-c7eec0ece4e5" activeEnvironment="Default" name="users" resourceRoot="" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:WsdlInterface" id="05b102d8-7001-4fbb-9122-43c8b5a8f580" wsaVersion="NONE" name="UsersPortSoap11" type="wsdl" bindingName="{http://libraryservice/users}UsersPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/users.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/users.wsdl">
+      <con:part>
+        <con:url>http://localhost:8080/ws/users.wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://libraryservice/users" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://libraryservice/users" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://libraryservice/users">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://libraryservice/users" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getUserByIdRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userId" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getUserByIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userInfo" type="tns:userInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="userInfo">
+        <xs:sequence>
+          <xs:element name="userId" nillable="true" type="xs:long"/>
+          <xs:element name="lastName" type="xs:string"/>
+          <xs:element name="firstName" type="xs:string"/>
+          <xs:element name="email" type="xs:string"/>
+          <xs:element name="password" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" name="borrowInfo" type="tns:borrowInfo"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="addUserRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="userInfo" type="tns:userInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="serviceStatus">
+        <xs:sequence>
+          <xs:element name="statusCode" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="updateUserRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userInfo" type="tns:userInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="userInfo" type="tns:userInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteUserRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userId" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="loginUserRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="loginUserResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="userInfo" type="tns:userInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="borrowInfo">
+        <xs:sequence>
+          <xs:element name="borrow_id" nillable="true" type="xs:long"/>
+          <xs:element name="borrower" type="tns:userInfo"/>
+          <xs:element name="borrow" type="tns:bookInfo"/>
+          <xs:element name="term" type="xs:date"/>
+          <xs:element name="extend" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="bookInfo">
+        <xs:sequence>
+          <xs:element name="bookId" nillable="true" type="xs:long"/>
+          <xs:element name="title" type="xs:string"/>
+          <xs:element name="author" type="xs:string"/>
+          <xs:element name="category" type="xs:string"/>
+          <xs:element name="available" nillable="true" type="xs:long"/>
+          <xs:element maxOccurs="unbounded" name="borrowInfo" type="tns:borrowInfo"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="deleteUserRequest">
+    <wsdl:part element="tns:deleteUserRequest" name="deleteUserRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserByIdResponse">
+    <wsdl:part element="tns:getUserByIdResponse" name="getUserByIdResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addUserRequest">
+    <wsdl:part element="tns:addUserRequest" name="addUserRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loginUserResponse">
+    <wsdl:part element="tns:loginUserResponse" name="loginUserResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserByIdRequest">
+    <wsdl:part element="tns:getUserByIdRequest" name="getUserByIdRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateUserRequest">
+    <wsdl:part element="tns:updateUserRequest" name="updateUserRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteUserResponse">
+    <wsdl:part element="tns:deleteUserResponse" name="deleteUserResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addUserResponse">
+    <wsdl:part element="tns:addUserResponse" name="addUserResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateUserResponse">
+    <wsdl:part element="tns:updateUserResponse" name="updateUserResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loginUserRequest">
+    <wsdl:part element="tns:loginUserRequest" name="loginUserRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="UsersPort">
+    <wsdl:operation name="deleteUser">
+      <wsdl:input message="tns:deleteUserRequest" name="deleteUserRequest"></wsdl:input>
+      <wsdl:output message="tns:deleteUserResponse" name="deleteUserResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserById">
+      <wsdl:input message="tns:getUserByIdRequest" name="getUserByIdRequest"></wsdl:input>
+      <wsdl:output message="tns:getUserByIdResponse" name="getUserByIdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addUser">
+      <wsdl:input message="tns:addUserRequest" name="addUserRequest"></wsdl:input>
+      <wsdl:output message="tns:addUserResponse" name="addUserResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loginUser">
+      <wsdl:input message="tns:loginUserRequest" name="loginUserRequest"></wsdl:input>
+      <wsdl:output message="tns:loginUserResponse" name="loginUserResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateUser">
+      <wsdl:input message="tns:updateUserRequest" name="updateUserRequest"></wsdl:input>
+      <wsdl:output message="tns:updateUserResponse" name="updateUserResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UsersPortSoap11" type="tns:UsersPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="deleteUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteUserRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserById">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getUserByIdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUserByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addUserRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loginUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="loginUserRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="loginUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateUserRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UsersPortService">
+    <wsdl:port binding="tns:UsersPortSoap11" name="UsersPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://localhost:8080/ws</con:endpoint>
+    </con:endpoints>
+    <con:operation id="eb445f4c-844a-44c9-a0c1-16ab8df76865" isOneWay="false" action="" name="addUser" bindingOperationName="addUser" type="Request-Response" outputName="addUserResponse" inputName="addUserRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="47a6f6b4-2ce9-4ed9-9131-82059896c2ff" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://libraryservice/users">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <user:addUserRequest>\r
+         <user:lastName>?</user:lastName>\r
+         <user:firstName>?</user:firstName>\r
+         <user:email>?</user:email>\r
+         <user:password>?</user:password>\r
+      </user:addUserRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://libraryservice/users/UsersPort/addUserRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="65b4133b-c831-4151-83ec-fa0e32995a18" isOneWay="false" action="" name="deleteUser" bindingOperationName="deleteUser" type="Request-Response" outputName="deleteUserResponse" inputName="deleteUserRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="9b356510-f21c-4488-8e92-7fe0d6233c93" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://libraryservice/users">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <user:deleteUserRequest>\r
+         <user:userId>?</user:userId>\r
+      </user:deleteUserRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://libraryservice/users/UsersPort/deleteUserRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="753af5d1-a0aa-4c6a-8529-e0ac43e2b925" isOneWay="false" action="" name="getUserById" bindingOperationName="getUserById" type="Request-Response" outputName="getUserByIdResponse" inputName="getUserByIdRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="b013629b-9e62-4c06-b30f-ca032a6d554f" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://libraryservice/users">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <user:getUserByIdRequest>\r
+         <user:userId>?</user:userId>\r
+      </user:getUserByIdRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://libraryservice/users/UsersPort/getUserByIdRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="ba9ea45b-1ccb-4027-8f45-44cfc93b36d4" isOneWay="false" action="" name="loginUser" bindingOperationName="loginUser" type="Request-Response" outputName="loginUserResponse" inputName="loginUserRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="4ffd612a-5807-4c4f-b854-858656eb7fac" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://libraryservice/users">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <user:loginUserRequest>\r
+         <user:email>?</user:email>\r
+         <user:password>?</user:password>\r
+      </user:loginUserRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://libraryservice/users/UsersPort/loginUserRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="5fc1e022-aaf5-4be4-ad2d-63130c32e3a1" isOneWay="false" action="" name="updateUser" bindingOperationName="updateUser" type="Request-Response" outputName="updateUserResponse" inputName="updateUserRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="d635aa0f-6524-4a54-bd16-871ad813fca1" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:user="http://libraryservice/users">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <user:updateUserRequest>\r
+         <user:userInfo>\r
+            <user:userId>?</user:userId>\r
+            <user:lastName>?</user:lastName>\r
+            <user:firstName>?</user:firstName>\r
+            <user:email>?</user:email>\r
+            <user:password>?</user:password>\r
+            <!--1 or more repetitions:-->\r
+            <user:borrowInfo>\r
+               <user:borrow_id>?</user:borrow_id>\r
+               <user:borrower/>\r
+               <user:borrow>\r
+                  <user:bookId>?</user:bookId>\r
+                  <user:title>?</user:title>\r
+                  <user:author>?</user:author>\r
+                  <user:category>?</user:category>\r
+                  <user:available>?</user:available>\r
+                  <!--1 or more repetitions:-->\r
+                  <user:borrowInfo/>\r
+               </user:borrow>\r
+               <user:term>?</user:term>\r
+               <user:extend>?</user:extend>\r
+            </user:borrowInfo>\r
+         </user:userInfo>\r
+      </user:updateUserRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://libraryservice/users/UsersPort/updateUserRequest"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+</con:soapui-project>

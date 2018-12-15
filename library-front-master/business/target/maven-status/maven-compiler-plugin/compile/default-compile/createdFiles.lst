@@ -1,0 +1,8 @@
+com/library/service/BorrowsService.class
+com/library/service/UsersService.class
+com/library/service/impl/BooksServiceImpl.class
+com/library/service/EmployeesService.class
+com/library/service/impl/EmployeesServiceImpl.class
+com/library/service/impl/BorrowsServiceImpl.class
+com/library/service/impl/UsersServiceImpl.class
+com/library/service/BooksService.class

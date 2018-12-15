@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="cb59b622-ded0-4bf0-8731-258e7616ea63" activeEnvironment="Default" name="books" resourceRoot="" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:WsdlInterface" id="40a8b6cc-4df0-4b68-9dcd-18a1add93d5d" wsaVersion="NONE" name="BooksPortSoap11" type="wsdl" bindingName="{http://libraryservice/books}BooksPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/books.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/books.wsdl">
+      <con:part>
+        <con:url>http://localhost:8080/ws/books.wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://libraryservice/books" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://libraryservice/books" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://libraryservice/books">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://libraryservice/books" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getBookByIdRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="bookId" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getBookByIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="bookInfo" type="tns:bookInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="bookInfo">
+        <xs:sequence>
+          <xs:element name="bookId" nillable="true" type="xs:long"/>
+          <xs:element name="title" type="xs:string"/>
+          <xs:element name="author" type="xs:string"/>
+          <xs:element name="category" type="xs:string"/>
+          <xs:element name="available" nillable="true" type="xs:long"/>
+          <xs:element maxOccurs="unbounded" name="borrowInfo" type="tns:borrowInfo"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAllBooksRequest">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="getAllBooksResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="bookInfo" type="tns:bookInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="searchBookRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="author" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="searchBookResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="bookInfo" type="tns:bookInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="serviceStatus">
+        <xs:sequence>
+          <xs:element name="statusCode" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="addBookRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="category" type="xs:string"/>
+            <xs:element name="author" type="xs:string"/>
+            <xs:element name="available" nillable="true" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addBookResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="bookInfo" type="tns:bookInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateBookRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="bookInfo" type="tns:bookInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateBookResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="bookInfo" type="tns:bookInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteBookRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="bookId" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteBookResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="borrowInfo">
+        <xs:sequence>
+          <xs:element name="borrow_id" nillable="true" type="xs:long"/>
+          <xs:element name="borrower" type="tns:userInfo"/>
+          <xs:element name="book" type="tns:bookInfo"/>
+          <xs:element name="term" type="xs:date"/>
+          <xs:element name="extend" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="userInfo">
+        <xs:sequence>
+          <xs:element name="userId" nillable="true" type="xs:long"/>
+          <xs:element name="lastName" type="xs:string"/>
+          <xs:element name="firstName" type="xs:string"/>
+          <xs:element name="email" type="xs:string"/>
+          <xs:element name="password" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="updateBookRequest">
+    <wsdl:part element="tns:updateBookRequest" name="updateBookRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllBooksResponse">
+    <wsdl:part element="tns:getAllBooksResponse" name="getAllBooksResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addBookRequest">
+    <wsdl:part element="tns:addBookRequest" name="addBookRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookByIdRequest">
+    <wsdl:part element="tns:getBookByIdRequest" name="getBookByIdRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchBookRequest">
+    <wsdl:part element="tns:searchBookRequest" name="searchBookRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteBookRequest">
+    <wsdl:part element="tns:deleteBookRequest" name="deleteBookRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllBooksRequest">
+    <wsdl:part element="tns:getAllBooksRequest" name="getAllBooksRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addBookResponse">
+    <wsdl:part element="tns:addBookResponse" name="addBookResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateBookResponse">
+    <wsdl:part element="tns:updateBookResponse" name="updateBookResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchBookResponse">
+    <wsdl:part element="tns:searchBookResponse" name="searchBookResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteBookResponse">
+    <wsdl:part element="tns:deleteBookResponse" name="deleteBookResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookByIdResponse">
+    <wsdl:part element="tns:getBookByIdResponse" name="getBookByIdResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BooksPort">
+    <wsdl:operation name="updateBook">
+      <wsdl:input message="tns:updateBookRequest" name="updateBookRequest"></wsdl:input>
+      <wsdl:output message="tns:updateBookResponse" name="updateBookResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllBooks">
+      <wsdl:input message="tns:getAllBooksRequest" name="getAllBooksRequest"></wsdl:input>
+      <wsdl:output message="tns:getAllBooksResponse" name="getAllBooksResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBook">
+      <wsdl:input message="tns:addBookRequest" name="addBookRequest"></wsdl:input>
+      <wsdl:output message="tns:addBookResponse" name="addBookResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBookById">
+      <wsdl:input message="tns:getBookByIdRequest" name="getBookByIdRequest"></wsdl:input>
+      <wsdl:output message="tns:getBookByIdResponse" name="getBookByIdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchBook">
+      <wsdl:input message="tns:searchBookRequest" name="searchBookRequest"></wsdl:input>
+      <wsdl:output message="tns:searchBookResponse" name="searchBookResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBook">
+      <wsdl:input message="tns:deleteBookRequest" name="deleteBookRequest"></wsdl:input>
+      <wsdl:output message="tns:deleteBookResponse" name="deleteBookResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BooksPortSoap11" type="tns:BooksPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="updateBook">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateBookRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllBooks">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllBooksRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllBooksResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBook">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addBookRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBookById">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getBookByIdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBookByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchBook">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="searchBookRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBook">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteBookRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BooksPortService">
+    <wsdl:port binding="tns:BooksPortSoap11" name="BooksPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://localhost:8080/ws</con:endpoint>
+    </con:endpoints>
+    <con:operation id="cd65e30a-308f-41ac-8169-00ac58ebe234" isOneWay="false" action="" name="addBook" bindingOperationName="addBook" type="Request-Response" outputName="addBookResponse" inputName="addBookRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="20de3ea6-f2d5-4d0d-9b10-1a65a6ddb655" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:book="http://libraryservice/books">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <book:addBookRequest>\r
+         <book:title>?</book:title>\r
+         <book:category>?</book:category>\r
+         <book:author>?</book:author>\r
+         <book:available>?</book:available>\r
+      </book:addBookRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://libraryservice/books/BooksPort/addBookRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="edb677d6-079e-418c-a7fa-b05daed3cce9" isOneWay="false" action="" name="deleteBook" bindingOperationName="deleteBook" type="Request-Response" outputName="deleteBookResponse" inputName="deleteBookRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="aee668ae-c7c8-4866-ba3a-518169ed7692" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:book="http://libraryservice/books">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <book:deleteBookRequest>\r
+         <book:bookId>?</book:bookId>\r
+      </book:deleteBookRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://libraryservice/books/BooksPort/deleteBookRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="223f52b4-e160-4cc2-b88e-e5eb223c2529" isOneWay="false" action="" name="getAllBooks" bindingOperationName="getAllBooks" type="Request-Response" outputName="getAllBooksResponse" inputName="getAllBooksRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="4880e037-8c4e-476e-862a-dde27da977cb" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:book="http://libraryservice/books">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <book:getAllBooksRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://libraryservice/books/BooksPort/getAllBooksRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="c28fed92-9483-43b8-a313-ca4ad50b5b7b" isOneWay="false" action="" name="getBookById" bindingOperationName="getBookById" type="Request-Response" outputName="getBookByIdResponse" inputName="getBookByIdRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="dcdd648d-efc9-460e-9f28-0ae3a8099709" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:book="http://libraryservice/books">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <book:getBookByIdRequest>\r
+         <book:bookId>?</book:bookId>\r
+      </book:getBookByIdRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://libraryservice/books/BooksPort/getBookByIdRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="2d462af8-3c40-442b-8581-fde7d8162982" isOneWay="false" action="" name="searchBook" bindingOperationName="searchBook" type="Request-Response" outputName="searchBookResponse" inputName="searchBookRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="d5b107bb-e690-474d-8b74-32623bc132af" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:book="http://libraryservice/books">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <book:searchBookRequest>\r
+         <book:title>?</book:title>\r
+         <book:author>?</book:author>\r
+      </book:searchBookRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://libraryservice/books/BooksPort/searchBookRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="5451cba7-53b0-4ffb-8029-bc1329e586e7" isOneWay="false" action="" name="updateBook" bindingOperationName="updateBook" type="Request-Response" outputName="updateBookResponse" inputName="updateBookRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="db5d66c3-3e5e-4ff9-a69a-21f0f93206d2" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:book="http://libraryservice/books">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <book:updateBookRequest>\r
+         <book:bookInfo>\r
+            <book:bookId>?</book:bookId>\r
+            <book:title>?</book:title>\r
+            <book:author>?</book:author>\r
+            <book:category>?</book:category>\r
+            <book:available>?</book:available>\r
+            <!--1 or more repetitions:-->\r
+            <book:borrowInfo>\r
+               <book:borrow_id>?</book:borrow_id>\r
+               <book:borrower>\r
+                  <book:userId>?</book:userId>\r
+                  <book:lastName>?</book:lastName>\r
+                  <book:firstName>?</book:firstName>\r
+                  <book:email>?</book:email>\r
+                  <book:password>?</book:password>\r
+               </book:borrower>\r
+               <book:book/>\r
+               <book:term>?</book:term>\r
+               <book:extend>?</book:extend>\r
+            </book:borrowInfo>\r
+         </book:bookInfo>\r
+      </book:updateBookRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://libraryservice/books/BooksPort/updateBookRequest"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+</con:soapui-project>

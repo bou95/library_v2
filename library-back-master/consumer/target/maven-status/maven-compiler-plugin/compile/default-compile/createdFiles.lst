@@ -1,0 +1,4 @@
+com/library/consumer/repository/UsersRepo.class
+com/library/consumer/repository/BorrowRepo.class
+com/library/consumer/repository/BooksRepo.class
+com/library/consumer/repository/EmployeesRepo.class

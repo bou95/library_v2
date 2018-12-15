@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="d5ac78f5-820b-4ef7-90f7-d9eb290b191a" activeEnvironment="Default" name="borrows" resourceRoot="" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:WsdlInterface" id="02d56c88-0fb8-4966-a5c0-235a8f18f7fb" wsaVersion="NONE" name="BorrowPortSoap11" type="wsdl" bindingName="{http://libraryservice/borrows}BorrowPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/borrows.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/borrows.wsdl">
+      <con:part>
+        <con:url>http://localhost:8080/ws/borrows.wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://libraryservice/borrows" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://libraryservice/borrows" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://libraryservice/borrows">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://libraryservice/borrows" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getBorrowByIdRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="borrowId" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getBorrowByIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="borrowInfo" type="tns:borrowInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="borrowInfo">
+        <xs:sequence>
+          <xs:element name="borrow_id" nillable="true" type="xs:long"/>
+          <xs:element name="borrower" type="tns:userInfo"/>
+          <xs:element name="book" type="tns:bookInfo"/>
+          <xs:element name="term" type="xs:date"/>
+          <xs:element minOccurs="0" name="extend" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="userInfo">
+        <xs:sequence>
+          <xs:element name="userId" nillable="true" type="xs:long"/>
+          <xs:element name="lastName" type="xs:string"/>
+          <xs:element name="firstName" type="xs:string"/>
+          <xs:element name="email" type="xs:string"/>
+          <xs:element name="password" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="bookInfo">
+        <xs:sequence>
+          <xs:element name="bookId" nillable="true" type="xs:long"/>
+          <xs:element name="title" type="xs:string"/>
+          <xs:element name="author" type="xs:string"/>
+          <xs:element name="category" type="xs:string"/>
+          <xs:element name="available" nillable="true" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="addBorrowRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="userId" nillable="true" type="xs:long"/>
+            <xs:element name="bookId" nillable="true" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addBorrowResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="borrowInfo" type="tns:borrowInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="serviceStatus">
+        <xs:sequence>
+          <xs:element name="statusCode" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="extendBorrowRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="borrow_id" nillable="true" type="xs:long"/>
+            <xs:element minOccurs="0" name="extend" type="xs:boolean"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="extendBorrowResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="borrowInfo" type="tns:borrowInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteBorrowRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="borrowId" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteBorrowResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllBorrowsRequest">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="getAllBorrowsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="borrowInfo" type="tns:borrowInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addBorrowResponse">
+    <wsdl:part element="tns:addBorrowResponse" name="addBorrowResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="extendBorrowRequest">
+    <wsdl:part element="tns:extendBorrowRequest" name="extendBorrowRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="extendBorrowResponse">
+    <wsdl:part element="tns:extendBorrowResponse" name="extendBorrowResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteBorrowResponse">
+    <wsdl:part element="tns:deleteBorrowResponse" name="deleteBorrowResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBorrowByIdResponse">
+    <wsdl:part element="tns:getBorrowByIdResponse" name="getBorrowByIdResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllBorrowsResponse">
+    <wsdl:part element="tns:getAllBorrowsResponse" name="getAllBorrowsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBorrowByIdRequest">
+    <wsdl:part element="tns:getBorrowByIdRequest" name="getBorrowByIdRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteBorrowRequest">
+    <wsdl:part element="tns:deleteBorrowRequest" name="deleteBorrowRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllBorrowsRequest">
+    <wsdl:part element="tns:getAllBorrowsRequest" name="getAllBorrowsRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addBorrowRequest">
+    <wsdl:part element="tns:addBorrowRequest" name="addBorrowRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BorrowPort">
+    <wsdl:operation name="addBorrow">
+      <wsdl:input message="tns:addBorrowRequest" name="addBorrowRequest"></wsdl:input>
+      <wsdl:output message="tns:addBorrowResponse" name="addBorrowResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="extendBorrow">
+      <wsdl:input message="tns:extendBorrowRequest" name="extendBorrowRequest"></wsdl:input>
+      <wsdl:output message="tns:extendBorrowResponse" name="extendBorrowResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBorrow">
+      <wsdl:input message="tns:deleteBorrowRequest" name="deleteBorrowRequest"></wsdl:input>
+      <wsdl:output message="tns:deleteBorrowResponse" name="deleteBorrowResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBorrowById">
+      <wsdl:input message="tns:getBorrowByIdRequest" name="getBorrowByIdRequest"></wsdl:input>
+      <wsdl:output message="tns:getBorrowByIdResponse" name="getBorrowByIdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllBorrows">
+      <wsdl:input message="tns:getAllBorrowsRequest" name="getAllBorrowsRequest"></wsdl:input>
+      <wsdl:output message="tns:getAllBorrowsResponse" name="getAllBorrowsResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BorrowPortSoap11" type="tns:BorrowPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addBorrow">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="addBorrowRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addBorrowResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="extendBorrow">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="extendBorrowRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="extendBorrowResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBorrow">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteBorrowRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteBorrowResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBorrowById">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getBorrowByIdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBorrowByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllBorrows">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllBorrowsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllBorrowsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BorrowPortService">
+    <wsdl:port binding="tns:BorrowPortSoap11" name="BorrowPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://localhost:8080/ws</con:endpoint>
+    </con:endpoints>
+    <con:operation id="2d9a668a-b8e6-4de3-a3ee-a27d26ca73c7" isOneWay="false" action="" name="addBorrow" bindingOperationName="addBorrow" type="Request-Response" outputName="addBorrowResponse" inputName="addBorrowRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="8bd6c2f5-372f-403d-ba3b-f705bb90b17b" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bor="http://libraryservice/borrows">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <bor:addBorrowRequest>\r
+         <bor:userId>?</bor:userId>\r
+         <bor:bookId>?</bor:bookId>\r
+      </bor:addBorrowRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://libraryservice/borrows/BorrowPort/addBorrowRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="a2efe873-5cef-4eca-856c-34f3c97e016b" isOneWay="false" action="" name="deleteBorrow" bindingOperationName="deleteBorrow" type="Request-Response" outputName="deleteBorrowResponse" inputName="deleteBorrowRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="6ce91d7e-e041-4d0b-9fc5-abce95757e28" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bor="http://libraryservice/borrows">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <bor:deleteBorrowRequest>\r
+         <bor:borrowId>?</bor:borrowId>\r
+      </bor:deleteBorrowRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://libraryservice/borrows/BorrowPort/deleteBorrowRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="023ab00c-2444-48e3-ad4b-29a808a3b850" isOneWay="false" action="" name="extendBorrow" bindingOperationName="extendBorrow" type="Request-Response" outputName="extendBorrowResponse" inputName="extendBorrowRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="8756b761-6a94-4e2d-b3e0-262b66c602f6" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bor="http://libraryservice/borrows">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <bor:extendBorrowRequest>\r
+         <bor:borrow_id>?</bor:borrow_id>\r
+         <!--Optional:-->\r
+         <bor:extend>?</bor:extend>\r
+      </bor:extendBorrowRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://libraryservice/borrows/BorrowPort/extendBorrowRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="d8f75fff-3689-48de-adc0-90e8167c4bbf" isOneWay="false" action="" name="getAllBorrows" bindingOperationName="getAllBorrows" type="Request-Response" outputName="getAllBorrowsResponse" inputName="getAllBorrowsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="57bc4d07-5eda-4534-8af1-4f470422cd69" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bor="http://libraryservice/borrows">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <bor:getAllBorrowsRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://libraryservice/borrows/BorrowPort/getAllBorrowsRequest"/>
+      </con:call>
+    </con:operation>
+    <con:operation id="391e6545-f74f-425b-888d-0631b84fbf7a" isOneWay="false" action="" name="getBorrowById" bindingOperationName="getBorrowById" type="Request-Response" outputName="getBorrowByIdResponse" inputName="getBorrowByIdRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="d13d1677-718b-49af-84da-71e5a5863700" name="Request 1">
+        <con:settings/>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8080/ws</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bor="http://libraryservice/borrows">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <bor:getBorrowByIdRequest>\r
+         <bor:borrowId>?</bor:borrowId>\r
+      </bor:getBorrowByIdRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://libraryservice/borrows/BorrowPort/getBorrowByIdRequest"/>
+      </con:call>
+    </con:operation>
+  </con:interface>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+</con:soapui-project>

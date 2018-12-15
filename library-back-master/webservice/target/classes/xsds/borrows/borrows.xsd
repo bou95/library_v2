@@ -1,0 +1,114 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://libraryservice/borrows"
+           targetNamespace="http://libraryservice/borrows" elementFormDefault="qualified">
+
+    <xs:element name="getBorrowByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="borrowId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getBorrowByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="borrowInfo" type="tns:borrowInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="borrowInfo">
+        <xs:sequence>
+            <xs:element name="borrow_id" type="xs:long" nillable="true"/>
+            <xs:element name="borrower" type="tns:userInfo"/>
+            <xs:element name="book" type="tns:bookInfo"/>
+            <xs:element name="term" type="xs:date"/>
+            <xs:element name="extend" type="xs:boolean" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="userInfo">
+        <xs:sequence>
+            <xs:element name="userId" type="xs:long" nillable="true"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="bookInfo">
+        <xs:sequence>
+            <xs:element name="bookId" type="xs:long" nillable="true"/>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="author" type="xs:string"/>
+            <xs:element name="category" type="xs:string"/>
+            <xs:element name="available" type="xs:long" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="addBorrowRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userId" type="xs:long" nillable="true"/>
+                <xs:element name="bookId" type="xs:long" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addBorrowResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xs:element name="borrowInfo" type="tns:borrowInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="extendBorrowRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="borrow_id" type="xs:long" nillable="true"/>
+                <xs:element name="extend" type="xs:boolean" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="extendBorrowResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xs:element name="borrowInfo" type="tns:borrowInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteBorrowRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="borrowId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteBorrowResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllBorrowsRequest">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="getAllBorrowsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="borrowInfo" type="tns:borrowInfo" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

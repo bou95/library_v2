@@ -1,0 +1,4 @@
+com/library/model/entities/Borrow.class
+com/library/model/entities/Employees.class
+com/library/model/entities/Books.class
+com/library/model/entities/Users.class
