@@ -55,6 +55,9 @@ public class BorrowEndpoint {
             Date d = new Date();
             borrow.setTerm(weeksLater(d));
             borrow.setExtend(false);
+            Long available = book.getAvailable() - 1L;
+            book.setAvailable(available);
+            booksService.update(book);
             boolean flag = borrowsService.insert(borrow);
             if (flag == false) {
                 serviceStatus.setStatusCode("CONFLICT");
