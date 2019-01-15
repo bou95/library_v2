@@ -5,48 +5,45 @@
 Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-Généré le : 2018.05.11 à 08:30:44 PM CEST 
+Généré le : 2019.01.15 à 02:53:57 PM CET 
 
   -->
-  <bindings scd="x-schema::tns" xmlns:tns="http://libraryservice/employees">
+  <bindings scd="x-schema::tns" xmlns:tns="http://libraryservice/reservations">
     <schemaBindings map="false">
-      <package name="com.library.ws.employees"/>
+      <package name="com.library.ws.reservations"/>
     </schemaBindings>
-    <bindings scd="tns:getEmployeeByIdRequest">
-      <class ref="com.library.ws.employees.GetEmployeeByIdRequest"/>
+    <bindings scd="tns:addReservationRequest">
+      <class ref="com.library.ws.reservations.AddReservationRequest"/>
     </bindings>
-    <bindings scd="tns:getEmployeeByIdResponse">
-      <class ref="com.library.ws.employees.GetEmployeeByIdResponse"/>
-    </bindings>
-    <bindings scd="~tns:employeeInfo">
-      <class ref="com.library.ws.employees.EmployeeInfo"/>
-    </bindings>
-    <bindings scd="tns:addEmployeeRequest">
-      <class ref="com.library.ws.employees.AddEmployeeRequest"/>
-    </bindings>
-    <bindings scd="tns:addEmployeeResponse">
-      <class ref="com.library.ws.employees.AddEmployeeResponse"/>
+    <bindings scd="tns:addReservationResponse">
+      <class ref="com.library.ws.reservations.AddReservationResponse"/>
     </bindings>
     <bindings scd="~tns:serviceStatus">
-      <class ref="com.library.ws.employees.ServiceStatus"/>
+      <class ref="com.library.ws.reservations.ServiceStatus"/>
     </bindings>
-    <bindings scd="tns:updateEmployeeRequest">
-      <class ref="com.library.ws.employees.UpdateEmployeeRequest"/>
+    <bindings scd="~tns:reservationInfo">
+      <class ref="com.library.ws.reservations.ReservationInfo"/>
     </bindings>
-    <bindings scd="tns:updateEmployeeResponse">
-      <class ref="com.library.ws.employees.UpdateEmployeeResponse"/>
+    <bindings scd="tns:getReservationByBookRequest">
+      <class ref="com.library.ws.reservations.GetReservationByBookRequest"/>
     </bindings>
-    <bindings scd="tns:deleteEmployeeRequest">
-      <class ref="com.library.ws.employees.DeleteEmployeeRequest"/>
+    <bindings scd="tns:getReservationByBookResponse">
+      <class ref="com.library.ws.reservations.GetReservationByBookResponse"/>
     </bindings>
-    <bindings scd="tns:deleteEmployeeResponse">
-      <class ref="com.library.ws.employees.DeleteEmployeeResponse"/>
+    <bindings scd="tns:deleteUserReservationRequest">
+      <class ref="com.library.ws.reservations.DeleteUserReservationRequest"/>
     </bindings>
-    <bindings scd="tns:loginEmployeeRequest">
-      <class ref="com.library.ws.employees.LoginEmployeeRequest"/>
+    <bindings scd="tns:deleteUserReservationResponse">
+      <class ref="com.library.ws.reservations.DeleteUserReservationResponse"/>
     </bindings>
-    <bindings scd="tns:loginEmployeeResponse">
-      <class ref="com.library.ws.employees.LoginEmployeeResponse"/>
+    <bindings scd="~tns:bookInfo">
+      <class ref="com.library.ws.reservations.BookInfo"/>
+    </bindings>
+    <bindings scd="~tns:userInfo">
+      <class ref="com.library.ws.reservations.UserInfo"/>
+    </bindings>
+    <bindings scd="~tns:treemap">
+      <class ref="com.library.ws.reservations.Treemap"/>
     </bindings>
   </bindings>
 </bindings>

@@ -33,6 +33,7 @@ public class Users {
     @OneToMany(mappedBy = "borrower", cascade =CascadeType.ALL, fetch=FetchType.EAGER)
     private List<Borrow> borrowList;
 
+
     public String getLastName() {
         return lastName;
     }
@@ -80,4 +81,5 @@ public class Users {
     public void setBorrowList(List<Borrow> borrowList) {
         this.borrowList = borrowList;
     }
+
 }

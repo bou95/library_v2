@@ -62,7 +62,16 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         definition.setSchema(borrowsSchema);
         return definition;
     }
-    
+
+    @Bean(name = "reservations")
+    public DefaultWsdl11Definition DefinitionReservation(XsdSchema reservationsSchema){
+        DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
+        definition.setPortTypeName("ReservationPort");
+        definition.setTargetNamespace("http://libraryservice/reservations");
+        definition.setLocationUri("/ws");
+        definition.setSchema(reservationsSchema);
+        return definition;
+    }
 
     @Bean
     public XsdSchema usersSchema() {
@@ -83,5 +92,9 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     public XsdSchema borrowsSchema() {
         return new SimpleXsdSchema(new ClassPathResource("xsds/borrows/borrows.xsd"));
     }
-    
+
+    @Bean
+    public XsdSchema reservationsSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("xsds/reservations/reservations.xsd"));
+    }
 }

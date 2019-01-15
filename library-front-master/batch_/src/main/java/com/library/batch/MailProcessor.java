@@ -1,6 +1,7 @@
 package com.library.batch;
 
 import com.library.email.ApplicationMailer;
+import com.opensymphony.xwork2.inject.Inject;
 import entities.Books;
 import entities.Borrows;
 import entities.Users;
@@ -22,7 +23,7 @@ import java.util.List;
 public class MailProcessor implements Tasklet, StepExecutionListener {
 
     private List<Borrows> outdated;
-    @Autowired
+    @Inject
     ApplicationMailer applicationMailer;
 
     @Override

@@ -114,6 +114,7 @@
             <xs:element name="borrow_id" type="xs:long" nillable="true"/>
             <xs:element name="borrower" type="tns:userInfo"/>
             <xs:element name="book" type="tns:bookInfo"/>
+            <xs:element name="reservation" type="tns:reservationInfo"/>
             <xs:element name="term" type="xs:date"/>
             <xs:element name="extend" type="xs:boolean"/>
         </xs:sequence>
@@ -127,6 +128,21 @@
             <xs:element name="email" type="xs:string"/>
             <xs:element name="password" type="xs:string"/>
         </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="reservationInfo">
+        <xs:sequence>
+            <xs:element name="res_id" type="xs:long" nillable="true"/>
+            <xs:element name="book" type="tns:bookInfo"/>
+            <xs:element name="borrowers" type="tns:treemap" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="treemap">
+        <xs:all>
+            <xs:element name="key" type="xs:long" nillable="true"/>
+            <xs:element name="value" type="tns:userInfo"/>
+        </xs:all>
     </xs:complexType>
 
 </xs:schema>

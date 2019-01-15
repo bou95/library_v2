@@ -1,0 +1,97 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://libraryservice/reservations"
+           targetNamespace="http://libraryservice/reservations" elementFormDefault="qualified">
+
+    <!-- Creer une réservation -->
+    <xs:element name="addReservationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bookId" type="xs:long" nillable="true"/>
+                <xs:element name="userId" type="xs:long" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addReservationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xs:element name="reservationInfo" type="tns:reservationInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Obtenir une reservation grace au livre -->
+    <xs:element name="getReservationByBookRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bookId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getReservationByBookResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reservationInfo" type="tns:reservationInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- supprimer un user dans la tree map -->
+    <xs:element name="deleteUserReservationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bookId" type="xs:long"/>
+                <xs:element name="userId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteUserReservationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Type complexe -->
+    <xs:complexType name="reservationInfo">
+        <xs:sequence>
+            <xs:element name="res_id" type="xs:long" nillable="true"/>
+            <xs:element name="book" type="tns:bookInfo"/>
+            <xs:element name="borrowers" type="tns:treemap" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="bookInfo">
+        <xs:sequence>
+            <xs:element name="bookId" type="xs:long" nillable="true"/>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="author" type="xs:string"/>
+            <xs:element name="category" type="xs:string"/>
+            <xs:element name="available" type="xs:long" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="userInfo">
+        <xs:sequence>
+            <xs:element name="userId" type="xs:long" nillable="true"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="treemap">
+        <xs:all>
+            <xs:element name="key" type="xs:long" nillable="true"/>
+            <xs:element name="value" type="tns:userInfo"/>
+        </xs:all>
+    </xs:complexType>
+</xs:schema>

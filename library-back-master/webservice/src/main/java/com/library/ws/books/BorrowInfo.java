@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.05.11 à 08:30:44 PM CEST 
+// Généré le : 2019.01.15 à 02:53:55 PM CET 
 //
 
 
@@ -29,6 +29,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="borrow_id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="borrower" type="{http://libraryservice/books}userInfo"/&gt;
  *         &lt;element name="book" type="{http://libraryservice/books}bookInfo"/&gt;
+ *         &lt;element name="reservation" type="{http://libraryservice/books}reservationInfo"/&gt;
  *         &lt;element name="term" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
  *         &lt;element name="extend" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *       &lt;/sequence&gt;
@@ -44,6 +45,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "borrowId",
     "borrower",
     "book",
+    "reservation",
     "term",
     "extend"
 })
@@ -55,6 +57,8 @@ public class BorrowInfo {
     protected UserInfo borrower;
     @XmlElement(required = true)
     protected BookInfo book;
+    @XmlElement(required = true)
+    protected ReservationInfo reservation;
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar term;
@@ -130,6 +134,30 @@ public class BorrowInfo {
      */
     public void setBook(BookInfo value) {
         this.book = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété reservation.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ReservationInfo }
+     *     
+     */
+    public ReservationInfo getReservation() {
+        return reservation;
+    }
+
+    /**
+     * Définit la valeur de la propriété reservation.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ReservationInfo }
+     *     
+     */
+    public void setReservation(ReservationInfo value) {
+        this.reservation = value;
     }
 
     /**

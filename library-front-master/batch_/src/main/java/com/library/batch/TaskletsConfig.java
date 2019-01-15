@@ -18,11 +18,13 @@ import org.springframework.batch.support.transaction.ResourcelessTransactionMana
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @EnableBatchProcessing
+@ComponentScan(basePackages = {"com.library.service", "com.library.batch", "com.library.client"})
 public class TaskletsConfig {
 
     private OutDatedGetter outDatedGetter = new OutDatedGetter();

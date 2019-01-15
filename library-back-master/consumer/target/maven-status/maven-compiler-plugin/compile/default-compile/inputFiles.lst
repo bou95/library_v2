@@ -1,4 +1,5 @@
-/home/juju/git/library/library-back/consumer/src/main/java/com/library/consumer/repository/EmployeesRepo.java
-/home/juju/git/library/library-back/consumer/src/main/java/com/library/consumer/repository/UsersRepo.java
-/home/juju/git/library/library-back/consumer/src/main/java/com/library/consumer/repository/BooksRepo.java
-/home/juju/git/library/library-back/consumer/src/main/java/com/library/consumer/repository/BorrowRepo.java
+C:\Users\jnditife\git\library_v2\library-back-master\consumer\src\main\java\com\library\consumer\repository\UsersRepo.java
+C:\Users\jnditife\git\library_v2\library-back-master\consumer\src\main\java\com\library\consumer\repository\EmployeesRepo.java
+C:\Users\jnditife\git\library_v2\library-back-master\consumer\src\main\java\com\library\consumer\repository\BooksRepo.java
+C:\Users\jnditife\git\library_v2\library-back-master\consumer\src\main\java\com\library\consumer\repository\ReservationRepo.java
+C:\Users\jnditife\git\library_v2\library-back-master\consumer\src\main\java\com\library\consumer\repository\BorrowRepo.java

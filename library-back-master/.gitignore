@@ -22,4 +22,7 @@
 /nbbuild/
 /dist/
 /nbdist/
-/.nb-gradle/
+/.nb-gradle/consumer/target/
+model/target/
+business/target/
+webservice/target/
