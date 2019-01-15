@@ -24,3 +24,9 @@
 /nbdist/
 /.nb-gradle/
 ../.idea/
+business/target/
+model/target/
+consumer/target/
+batcj_/target/
+batch_/target/
+webclient/target/
