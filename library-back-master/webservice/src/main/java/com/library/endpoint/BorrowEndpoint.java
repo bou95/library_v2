@@ -83,11 +83,16 @@ public class BorrowEndpoint {
         Borrow borrow = borrowsService.getById(request.getBorrowId());
         ServiceStatus serviceStatus = new ServiceStatus();
         ExtendBorrowResponse response = new ExtendBorrowResponse();
+        Date today = Calendar.getInstance().getTime();
         if(borrow.getExtend() == true) {
             serviceStatus.setStatusCode("FAIL");
             serviceStatus.setMessage("Le prêt a déjà été prolongé");
             response.setServiceStatus(serviceStatus);
-        } else {
+        }if(borrow.getTerm().before(today)){
+            serviceStatus.setStatusCode("FAIL");
+            serviceStatus.setMessage("Le prêt ne peut etre prolongé après la date de fin.");
+            response.setServiceStatus(serviceStatus);
+        }else {
             borrow.setExtend(true);
             borrow.setTerm(weeksLater(borrow.getTerm()));
             borrowsService.extendBorrow(borrow);
