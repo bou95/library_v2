@@ -5,7 +5,7 @@
 Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-Généré le : 2019.01.15 à 02:53:57 PM CET 
+Généré le : 2019.01.17 à 03:15:06 PM CET 
 
   -->
   <bindings scd="x-schema::tns" xmlns:tns="http://libraryservice/reservations">
@@ -24,26 +24,23 @@ Généré le : 2019.01.15 à 02:53:57 PM CET
     <bindings scd="~tns:reservationInfo">
       <class ref="com.library.ws.reservations.ReservationInfo"/>
     </bindings>
-    <bindings scd="tns:getReservationByBookRequest">
-      <class ref="com.library.ws.reservations.GetReservationByBookRequest"/>
+    <bindings scd="tns:getReservationByIdRequest">
+      <class ref="com.library.ws.reservations.GetReservationByIdRequest"/>
     </bindings>
-    <bindings scd="tns:getReservationByBookResponse">
-      <class ref="com.library.ws.reservations.GetReservationByBookResponse"/>
+    <bindings scd="tns:getReservationByIdResponse">
+      <class ref="com.library.ws.reservations.GetReservationByIdResponse"/>
     </bindings>
-    <bindings scd="tns:deleteUserReservationRequest">
-      <class ref="com.library.ws.reservations.DeleteUserReservationRequest"/>
+    <bindings scd="tns:deleteReservationRequest">
+      <class ref="com.library.ws.reservations.DeleteReservationRequest"/>
     </bindings>
-    <bindings scd="tns:deleteUserReservationResponse">
-      <class ref="com.library.ws.reservations.DeleteUserReservationResponse"/>
+    <bindings scd="tns:deleteReservationResponse">
+      <class ref="com.library.ws.reservations.DeleteReservationResponse"/>
     </bindings>
     <bindings scd="~tns:bookInfo">
       <class ref="com.library.ws.reservations.BookInfo"/>
     </bindings>
     <bindings scd="~tns:userInfo">
       <class ref="com.library.ws.reservations.UserInfo"/>
-    </bindings>
-    <bindings scd="~tns:treemap">
-      <class ref="com.library.ws.reservations.Treemap"/>
     </bindings>
   </bindings>
 </bindings>

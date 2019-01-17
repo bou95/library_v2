@@ -88,11 +88,11 @@ public class BorrowEndpoint {
             serviceStatus.setStatusCode("FAIL");
             serviceStatus.setMessage("Le prêt a déjà été prolongé");
             response.setServiceStatus(serviceStatus);
-        }if(borrow.getTerm().before(today)){
+        } if(borrow.getTerm().before(today)){
             serviceStatus.setStatusCode("FAIL");
             serviceStatus.setMessage("Le prêt ne peut etre prolongé après la date de fin.");
             response.setServiceStatus(serviceStatus);
-        }else {
+        } else {
             borrow.setExtend(true);
             borrow.setTerm(weeksLater(borrow.getTerm()));
             borrowsService.extendBorrow(borrow);

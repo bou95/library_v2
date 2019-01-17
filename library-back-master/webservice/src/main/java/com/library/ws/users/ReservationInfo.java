@@ -6,7 +6,7 @@
 //
 
 
-package com.library.ws.books;
+package com.library.ws.users;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -28,8 +28,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="res_id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
- *         &lt;element name="book" type="{http://libraryservice/books}bookInfo"/&gt;
- *         &lt;element name="borrowers" type="{http://libraryservice/books}userInfo" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="book" type="{http://libraryservice/users}bookInfo"/&gt;
+ *         &lt;element name="borrowers" type="{http://libraryservice/users}userInfo" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="index" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;

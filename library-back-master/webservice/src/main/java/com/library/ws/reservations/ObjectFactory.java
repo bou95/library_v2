@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.15 à 02:53:57 PM CET 
+// Généré le : 2019.01.17 à 03:15:06 PM CET 
 //
 
 
@@ -69,35 +69,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetReservationByBookRequest }
+     * Create an instance of {@link GetReservationByIdRequest }
      * 
      */
-    public GetReservationByBookRequest createGetReservationByBookRequest() {
-        return new GetReservationByBookRequest();
+    public GetReservationByIdRequest createGetReservationByIdRequest() {
+        return new GetReservationByIdRequest();
     }
 
     /**
-     * Create an instance of {@link GetReservationByBookResponse }
+     * Create an instance of {@link GetReservationByIdResponse }
      * 
      */
-    public GetReservationByBookResponse createGetReservationByBookResponse() {
-        return new GetReservationByBookResponse();
+    public GetReservationByIdResponse createGetReservationByIdResponse() {
+        return new GetReservationByIdResponse();
     }
 
     /**
-     * Create an instance of {@link DeleteUserReservationRequest }
+     * Create an instance of {@link DeleteReservationRequest }
      * 
      */
-    public DeleteUserReservationRequest createDeleteUserReservationRequest() {
-        return new DeleteUserReservationRequest();
+    public DeleteReservationRequest createDeleteReservationRequest() {
+        return new DeleteReservationRequest();
     }
 
     /**
-     * Create an instance of {@link DeleteUserReservationResponse }
+     * Create an instance of {@link DeleteReservationResponse }
      * 
      */
-    public DeleteUserReservationResponse createDeleteUserReservationResponse() {
-        return new DeleteUserReservationResponse();
+    public DeleteReservationResponse createDeleteReservationResponse() {
+        return new DeleteReservationResponse();
     }
 
     /**
@@ -114,14 +114,6 @@ public class ObjectFactory {
      */
     public UserInfo createUserInfo() {
         return new UserInfo();
-    }
-
-    /**
-     * Create an instance of {@link Treemap }
-     * 
-     */
-    public Treemap createTreemap() {
-        return new Treemap();
     }
 
 }

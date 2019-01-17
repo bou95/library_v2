@@ -2,11 +2,11 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.17 à 03:15:05 PM CET 
+// Généré le : 2019.01.17 à 03:15:06 PM CET 
 //
 
 
-package com.library.ws.users;
+package com.library.ws.reservations;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -25,8 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="serviceStatus" type="{http://libraryservice/users}serviceStatus"/&gt;
- *         &lt;element name="userInfo" type="{http://libraryservice/users}userInfo"/&gt;
+ *         &lt;element name="serviceStatus" type="{http://libraryservice/reservations}serviceStatus"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,16 +36,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "serviceStatus",
-    "userInfo"
+    "serviceStatus"
 })
-@XmlRootElement(name = "addUserResponse")
-public class AddUserResponse {
+@XmlRootElement(name = "deleteReservationResponse")
+public class DeleteReservationResponse {
 
     @XmlElement(required = true)
     protected ServiceStatus serviceStatus;
-    @XmlElement(required = true)
-    protected UserInfo userInfo;
 
     /**
      * Obtient la valeur de la propriété serviceStatus.
@@ -70,30 +66,6 @@ public class AddUserResponse {
      */
     public void setServiceStatus(ServiceStatus value) {
         this.serviceStatus = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété userInfo.
-     * 
-     * @return
-     *     possible object is
-     *     {@link UserInfo }
-     *     
-     */
-    public UserInfo getUserInfo() {
-        return userInfo;
-    }
-
-    /**
-     * Définit la valeur de la propriété userInfo.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link UserInfo }
-     *     
-     */
-    public void setUserInfo(UserInfo value) {
-        this.userInfo = value;
     }
 
 }

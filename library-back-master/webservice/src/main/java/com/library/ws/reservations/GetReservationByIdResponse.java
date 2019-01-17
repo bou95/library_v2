@@ -2,11 +2,11 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.17 à 03:15:05 PM CET 
+// Généré le : 2019.01.17 à 03:15:06 PM CET 
 //
 
 
-package com.library.ws.books;
+package com.library.ws.reservations;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="bookInfo" type="{http://libraryservice/books}bookInfo"/&gt;
+ *         &lt;element name="reservationInfo" type="{http://libraryservice/reservations}reservationInfo"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "bookInfo"
+    "reservationInfo"
 })
-@XmlRootElement(name = "getBookByIdResponse")
-public class GetBookByIdResponse {
+@XmlRootElement(name = "getReservationByIdResponse")
+public class GetReservationByIdResponse {
 
     @XmlElement(required = true)
-    protected BookInfo bookInfo;
+    protected ReservationInfo reservationInfo;
 
     /**
-     * Obtient la valeur de la propriété bookInfo.
+     * Obtient la valeur de la propriété reservationInfo.
      * 
      * @return
      *     possible object is
-     *     {@link BookInfo }
+     *     {@link ReservationInfo }
      *     
      */
-    public BookInfo getBookInfo() {
-        return bookInfo;
+    public ReservationInfo getReservationInfo() {
+        return reservationInfo;
     }
 
     /**
-     * Définit la valeur de la propriété bookInfo.
+     * Définit la valeur de la propriété reservationInfo.
      * 
      * @param value
      *     allowed object is
-     *     {@link BookInfo }
+     *     {@link ReservationInfo }
      *     
      */
-    public void setBookInfo(BookInfo value) {
-        this.bookInfo = value;
+    public void setReservationInfo(ReservationInfo value) {
+        this.reservationInfo = value;
     }
 
 }

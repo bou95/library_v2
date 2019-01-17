@@ -2,12 +2,13 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.15 à 02:53:57 PM CET 
+// Généré le : 2019.01.17 à 03:15:06 PM CET 
 //
 
 
 package com.library.ws.reservations;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -28,7 +29,8 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="res_id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="book" type="{http://libraryservice/reservations}bookInfo"/&gt;
- *         &lt;element name="borrowers" type="{http://libraryservice/reservations}treemap" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="borrowers" type="{http://libraryservice/reservations}userInfo" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="index" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -41,7 +43,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "reservationInfo", propOrder = {
     "resId",
     "book",
-    "borrowers"
+    "borrowers",
+    "index"
 })
 public class ReservationInfo {
 
@@ -49,7 +52,9 @@ public class ReservationInfo {
     protected Long resId;
     @XmlElement(required = true)
     protected BookInfo book;
-    protected List<Treemap> borrowers;
+    protected List<UserInfo> borrowers;
+    @XmlElement(required = true)
+    protected BigInteger index;
 
     /**
      * Obtient la valeur de la propriété resId.
@@ -117,15 +122,39 @@ public class ReservationInfo {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Treemap }
+     * {@link UserInfo }
      * 
      * 
      */
-    public List<Treemap> getBorrowers() {
+    public List<UserInfo> getBorrowers() {
         if (borrowers == null) {
-            borrowers = new ArrayList<Treemap>();
+            borrowers = new ArrayList<UserInfo>();
         }
         return this.borrowers;
+    }
+
+    /**
+     * Obtient la valeur de la propriété index.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getIndex() {
+        return index;
+    }
+
+    /**
+     * Définit la valeur de la propriété index.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setIndex(BigInteger value) {
+        this.index = value;
     }
 
 }

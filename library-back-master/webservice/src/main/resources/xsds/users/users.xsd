@@ -23,6 +23,7 @@
             <xs:element name="email" type="xs:string"/>
             <xs:element name="password" type="xs:string"/>
             <xs:element name="borrowInfo" type="tns:borrowInfo" maxOccurs="unbounded"/>
+            <xs:element name="reservationInfo" type="tns:reservationInfo" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -106,6 +107,15 @@
             <xs:element name="borrow" type="tns:bookInfo"/>
             <xs:element name="term" type="xs:date"/>
             <xs:element name="extend" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="reservationInfo">
+        <xs:sequence>
+            <xs:element name="res_id" type="xs:long" nillable="true"/>
+            <xs:element name="book" type="tns:bookInfo"/>
+            <xs:element name="borrowers" type="tns:userInfo" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="index" type="xs:integer"/>
         </xs:sequence>
     </xs:complexType>
 

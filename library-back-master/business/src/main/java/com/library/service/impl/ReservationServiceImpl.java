@@ -27,48 +27,17 @@ public class ReservationServiceImpl implements ReservationService {
     UsersRepo userRepo;
 
     @Override
-    public boolean insert(Long bookId, Long userId) {
-        Books book = bookRepo.getOne(bookId);
-        Users user = userRepo.getOne(userId);
-        TreeMap<Long, Users> tm = new TreeMap<>();
-        Long maximum = book.getAvailable() * 2L;
-        Reservation reservation = repo.findReservationWithbook_id(book.getBook_id());
-        if(reservation == null){
-            reservation.setAssigned_book(book);
-            tm.put(1L, user);
-            reservation.setBorrowers(tm);
-            repo.save(reservation);
-            return true;
-        }if (reservation != null & reservation.getBorrowers().containsValue(user) == false){
-            Long key = reservation.getBorrowers().lastKey()+1L;
-            if(key < maximum){
-                tm.put(key, user);
-                reservation.setBorrowers(tm);
-                repo.save(reservation);
-                return true;
-            }else {
-                return false;
-            }
-        }else{
+    public boolean insert(Reservation reservation) {
+        Reservation res = repo.findReservationByBookAndBorrowers(reservation.getBook(), reservation.getBorrowers());
+        if (res !=null){
             return false;
-        }
+        }else return true;
     }
 
     @Override
-    public Reservation getByBook(Long id) {
-        Reservation reservation = repo.findReservationWithbook_id(id);
+    public Reservation getById(Long id) {
+        Reservation reservation = repo.findOne(id);
         return reservation;
-    }
-
-    @Override
-    public void deleteUserReservation(Long bookId, Long userId) {
-        Books book = bookRepo.getOne(bookId);
-        Users user = userRepo.getOne(userId);
-        Reservation reservation = repo.findReservationWithbook_id(book.getBook_id());
-        if(reservation.getBorrowers().containsValue(user) == true){
-            Long key = reservation.getBorrowers().firstKey();
-            reservation.getBorrowers().remove(key);
-        }
     }
 
     @Override
@@ -76,15 +45,5 @@ public class ReservationServiceImpl implements ReservationService {
         repo.delete(id);
     }
 
-    @Override
-    public boolean deleteByBook(Books book) {
-        Reservation reservation = repo.findReservationWithbook_id(book.getBook_id());
-        if (reservation != null & reservation.getBorrowers().isEmpty()){
-            repo.delete(reservation.getRes_id());
-            return true;
-        }else{
-            return false;
-        }
-    }
 
 }

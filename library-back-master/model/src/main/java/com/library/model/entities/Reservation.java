@@ -1,6 +1,7 @@
 package com.library.model.entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.TreeMap;
 
 @Entity
@@ -13,11 +14,17 @@ public class Reservation {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long res_id;
 
-    @OneToOne(fetch=FetchType.EAGER)
+    @XmlTransient
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "book_id")
-    private Books assigned_book;
+    private Books book;
 
-    private TreeMap<Long, Users> borrowers;
+    @XmlTransient
+    @ManyToOne(fetch =FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private Users borrowers;
+
+    private Integer index;
 
     public Long getRes_id() {
         return res_id;
@@ -27,19 +34,27 @@ public class Reservation {
         this.res_id = borrow_id;
     }
 
-    public Books getAssigned_book() {
-        return assigned_book;
+    public Books getBook() {
+        return book;
     }
 
-    public void setAssigned_book(Books assigned_book) {
-        this.assigned_book = assigned_book;
+    public void setBook(Books book) {
+        this.book = book;
     }
 
-    public TreeMap<Long, Users> getBorrowers() {
+    public Users getBorrowers() {
         return borrowers;
     }
 
-    public void setBorrowers(TreeMap<Long, Users> borrowers) {
+    public void setBorrowers(Users borrowers) {
         this.borrowers = borrowers;
+    }
+
+    public Integer getIndex() {
+        return index;
+    }
+
+    public void setIndex(Integer index) {
+        this.index = index;
     }
 }

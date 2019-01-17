@@ -26,3 +26,4 @@
 model/target/
 business/target/
 webservice/target/
+consumer/target

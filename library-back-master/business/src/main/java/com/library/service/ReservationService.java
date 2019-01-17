@@ -6,14 +6,11 @@ import com.library.model.entities.Users;
 
 public interface ReservationService {
 
-    boolean insert(Long bookId, Long userId);
+    boolean insert(Reservation reservation);
 
-    Reservation getByBook(Long id);
-
-    void deleteUserReservation(Long bookId, Long userId);
+    Reservation getById(Long id);
 
     void deleteById(Long id);
 
-    boolean deleteByBook(Books book);
 
 }

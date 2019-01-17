@@ -33,6 +33,9 @@ public class Users {
     @OneToMany(mappedBy = "borrower", cascade =CascadeType.ALL, fetch=FetchType.EAGER)
     private List<Borrow> borrowList;
 
+    @OneToMany(mappedBy = "borrowers", cascade =CascadeType.ALL, fetch=FetchType.EAGER)
+    private List<Reservation> reservation;
+
 
     public String getLastName() {
         return lastName;
@@ -82,4 +85,11 @@ public class Users {
         this.borrowList = borrowList;
     }
 
+    public List<Reservation> getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(List<Reservation> reservation) {
+        this.reservation = reservation;
+    }
 }

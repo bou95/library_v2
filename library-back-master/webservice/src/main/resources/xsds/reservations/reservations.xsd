@@ -20,14 +20,14 @@
     </xs:element>
 
     <!-- Obtenir une reservation grace au livre -->
-    <xs:element name="getReservationByBookRequest">
+    <xs:element name="getReservationByIdRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="bookId" type="xs:long"/>
+                <xs:element name="resId" type="xs:long"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="getReservationByBookResponse">
+    <xs:element name="getReservationByIdResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="reservationInfo" type="tns:reservationInfo"/>
@@ -36,15 +36,14 @@
     </xs:element>
 
     <!-- supprimer un user dans la tree map -->
-    <xs:element name="deleteUserReservationRequest">
+    <xs:element name="deleteReservationRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="bookId" type="xs:long"/>
-                <xs:element name="userId" type="xs:long"/>
+                <xs:element name="resId" type="xs:long"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="deleteUserReservationResponse">
+    <xs:element name="deleteReservationResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="serviceStatus" type="tns:serviceStatus"/>
@@ -57,7 +56,8 @@
         <xs:sequence>
             <xs:element name="res_id" type="xs:long" nillable="true"/>
             <xs:element name="book" type="tns:bookInfo"/>
-            <xs:element name="borrowers" type="tns:treemap" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="borrowers" type="tns:userInfo" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="index" type="xs:integer"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -87,11 +87,5 @@
             <xs:element name="message" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
-    
-    <xs:complexType name="treemap">
-        <xs:all>
-            <xs:element name="key" type="xs:long" nillable="true"/>
-            <xs:element name="value" type="tns:userInfo"/>
-        </xs:all>
-    </xs:complexType>
+
 </xs:schema>

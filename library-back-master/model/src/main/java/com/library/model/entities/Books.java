@@ -33,8 +33,8 @@ public class Books implements Serializable {
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     private List<Borrow> borrowList;
 
-    @OneToOne(mappedBy = "assigned_book", cascade =CascadeType.ALL, fetch=FetchType.EAGER)
-    private Reservation reservation;
+    @OneToMany(mappedBy = "book", cascade =CascadeType.ALL, fetch=FetchType.EAGER)
+    private List<Reservation> reservation;
 
     public String getAuthor() {
 		return author;
@@ -84,11 +84,11 @@ public class Books implements Serializable {
         this.borrowList = borrowList;
     }
 
-    public Reservation getReservation() {
+    public List<Reservation> getReservation() {
         return reservation;
     }
 
-    public void setReservation(Reservation reservation) {
+    public void setReservation(List<Reservation> reservation) {
         this.reservation = reservation;
     }
 }
