@@ -5,54 +5,54 @@
 Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-Généré le : 2018.05.11 à 11:14:22 PM CEST 
+Généré le : 2019.02.11 à 06:03:35 PM CET 
 
   -->
-  <bindings xmlns:tns="http://libraryservice/borrows" if-exists="true" scd="x-schema::tns">
+  <bindings xmlns:tns="http://libraryservice/reservations" if-exists="true" scd="x-schema::tns">
     <schemaBindings map="false">
-      <package name="com.library.wsdl.borrows"/>
+      <package name="com.library.wsdl.reservations"/>
     </schemaBindings>
-    <bindings if-exists="true" scd="tns:getBorrowByIdRequest">
-      <class ref="com.library.wsdl.borrows.GetBorrowByIdRequest"/>
+    <bindings if-exists="true" scd="tns:addReservationRequest">
+      <class ref="com.library.wsdl.reservations.AddReservationRequest"/>
     </bindings>
-    <bindings if-exists="true" scd="tns:getBorrowByIdResponse">
-      <class ref="com.library.wsdl.borrows.GetBorrowByIdResponse"/>
-    </bindings>
-    <bindings if-exists="true" scd="~tns:borrowInfo">
-      <class ref="com.library.wsdl.borrows.BorrowInfo"/>
-    </bindings>
-    <bindings if-exists="true" scd="tns:addBorrowRequest">
-      <class ref="com.library.wsdl.borrows.AddBorrowRequest"/>
-    </bindings>
-    <bindings if-exists="true" scd="tns:addBorrowResponse">
-      <class ref="com.library.wsdl.borrows.AddBorrowResponse"/>
+    <bindings if-exists="true" scd="tns:addReservationResponse">
+      <class ref="com.library.wsdl.reservations.AddReservationResponse"/>
     </bindings>
     <bindings if-exists="true" scd="~tns:serviceStatus">
-      <class ref="com.library.wsdl.borrows.ServiceStatus"/>
+      <class ref="com.library.wsdl.reservations.ServiceStatus"/>
     </bindings>
-    <bindings if-exists="true" scd="tns:extendBorrowRequest">
-      <class ref="com.library.wsdl.borrows.ExtendBorrowRequest"/>
+    <bindings if-exists="true" scd="~tns:reservationInfo">
+      <class ref="com.library.wsdl.reservations.ReservationInfo"/>
     </bindings>
-    <bindings if-exists="true" scd="tns:extendBorrowResponse">
-      <class ref="com.library.wsdl.borrows.ExtendBorrowResponse"/>
+    <bindings if-exists="true" scd="tns:getReservationByIdRequest">
+      <class ref="com.library.wsdl.reservations.GetReservationByIdRequest"/>
     </bindings>
-    <bindings if-exists="true" scd="tns:deleteBorrowRequest">
-      <class ref="com.library.wsdl.borrows.DeleteBorrowRequest"/>
+    <bindings if-exists="true" scd="tns:getReservationByIdResponse">
+      <class ref="com.library.wsdl.reservations.GetReservationByIdResponse"/>
     </bindings>
-    <bindings if-exists="true" scd="tns:deleteBorrowResponse">
-      <class ref="com.library.wsdl.borrows.DeleteBorrowResponse"/>
+    <bindings if-exists="true" scd="tns:getAllReservationsRequest">
+      <class ref="com.library.wsdl.reservations.GetAllReservationsRequest"/>
     </bindings>
-    <bindings if-exists="true" scd="tns:getAllBorrowsRequest">
-      <class ref="com.library.wsdl.borrows.GetAllBorrowsRequest"/>
+    <bindings if-exists="true" scd="tns:getAllReservationsResponse">
+      <class ref="com.library.wsdl.reservations.GetAllReservationsResponse"/>
     </bindings>
-    <bindings if-exists="true" scd="tns:getAllBorrowsResponse">
-      <class ref="com.library.wsdl.borrows.GetAllBorrowsResponse"/>
+    <bindings if-exists="true" scd="tns:getAllReservationsByUserRequest">
+      <class ref="com.library.wsdl.reservations.GetAllReservationsByUserRequest"/>
     </bindings>
-    <bindings if-exists="true" scd="~tns:userInfo">
-      <class ref="com.library.wsdl.borrows.UserInfo"/>
+    <bindings if-exists="true" scd="tns:getAllReservationsByUserResponse">
+      <class ref="com.library.wsdl.reservations.GetAllReservationsByUserResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:deleteReservationRequest">
+      <class ref="com.library.wsdl.reservations.DeleteReservationRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:deleteReservationResponse">
+      <class ref="com.library.wsdl.reservations.DeleteReservationResponse"/>
     </bindings>
     <bindings if-exists="true" scd="~tns:bookInfo">
-      <class ref="com.library.wsdl.borrows.BookInfo"/>
+      <class ref="com.library.wsdl.reservations.BookInfo"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:userInfo">
+      <class ref="com.library.wsdl.reservations.UserInfo"/>
     </bindings>
   </bindings>
 </bindings>

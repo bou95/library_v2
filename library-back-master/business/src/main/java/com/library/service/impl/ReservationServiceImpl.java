@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.TreeMap;
 
 @Transactional
@@ -31,7 +32,10 @@ public class ReservationServiceImpl implements ReservationService {
         Reservation res = repo.findReservationByBookAndBorrowers(reservation.getBook(), reservation.getBorrowers());
         if (res !=null){
             return false;
-        }else return true;
+        }else {
+            repo.save(reservation);
+            return true;
+        }
     }
 
     @Override
@@ -41,8 +45,26 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    public Reservation getByBookAndUser(Users user, Books book) {
+        Reservation res = repo.findReservationByBookAndBorrowers(book, user);
+        return res;
+    }
+
+    @Override
+    public List<Reservation> getAllReservations(){
+        List<Reservation> reservations = repo.findAll();
+        return reservations;
+    }
+
+    @Override
     public void deleteById(Long id) {
         repo.delete(id);
+    }
+
+    @Override
+    public List<Reservation> findAllByUser(Users user) {
+        List<Reservation> reservations = repo.findAllReservationsByBorrowers(user);
+        return reservations;
     }
 
 

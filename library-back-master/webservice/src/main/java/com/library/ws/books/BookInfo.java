@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.17 à 03:15:05 PM CET 
+// Généré le : 2019.02.11 à 06:02:29 PM CET 
 //
 
 
@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="available" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="borrowInfo" type="{http://libraryservice/books}borrowInfo" maxOccurs="unbounded"/&gt;
  *         &lt;element name="reservationInfo" type="{http://libraryservice/books}reservationInfo" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="borrowListSize" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="reservationListSize" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -49,7 +51,9 @@ import javax.xml.bind.annotation.XmlType;
     "category",
     "available",
     "borrowInfo",
-    "reservationInfo"
+    "reservationInfo",
+    "borrowListSize",
+    "reservationListSize"
 })
 public class BookInfo {
 
@@ -67,6 +71,8 @@ public class BookInfo {
     protected List<BorrowInfo> borrowInfo;
     @XmlElement(required = true)
     protected List<ReservationInfo> reservationInfo;
+    protected int borrowListSize;
+    protected int reservationListSize;
 
     /**
      * Obtient la valeur de la propriété bookId.
@@ -244,6 +250,38 @@ public class BookInfo {
             reservationInfo = new ArrayList<ReservationInfo>();
         }
         return this.reservationInfo;
+    }
+
+    /**
+     * Obtient la valeur de la propriété borrowListSize.
+     * 
+     */
+    public int getBorrowListSize() {
+        return borrowListSize;
+    }
+
+    /**
+     * Définit la valeur de la propriété borrowListSize.
+     * 
+     */
+    public void setBorrowListSize(int value) {
+        this.borrowListSize = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété reservationListSize.
+     * 
+     */
+    public int getReservationListSize() {
+        return reservationListSize;
+    }
+
+    /**
+     * Définit la valeur de la propriété reservationListSize.
+     * 
+     */
+    public void setReservationListSize(int value) {
+        this.reservationListSize = value;
     }
 
 }

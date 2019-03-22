@@ -1,7 +1,7 @@
 package com.library.client;
 
 import com.library.wsdl.borrows.*;
-
+import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
@@ -28,6 +28,12 @@ public class BorrowsClient extends WebServiceGatewaySupport {
         GetAllBorrowsRequest request = new GetAllBorrowsRequest();
         GetAllBorrowsResponse response = (GetAllBorrowsResponse) getWebServiceTemplate().marshalSendAndReceive(
                 request, new SoapActionCallback("http://localhost:8080/ws/getAllBorrowsRequest"));
+        return response;
+    }
+
+    public  GetAllOutdatedBorrowsResponse outdatedBorrows(){
+        GetAllOutdatedBorrowsRequest request = new GetAllOutdatedBorrowsRequest();
+        GetAllOutdatedBorrowsResponse response = (GetAllOutdatedBorrowsResponse) getWebServiceTemplate().marshalSendAndReceive(request, new SoapActionCallback("http://localhost:8080/ws/getAllOutdatedBorrowsRequest"));
         return response;
     }
 

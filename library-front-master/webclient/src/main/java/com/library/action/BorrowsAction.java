@@ -4,18 +4,14 @@ import com.library.service.BooksService;
 import com.library.service.BorrowsService;
 import com.library.service.UsersService;
 import com.library.wsdl.borrows.BookInfo;
-import com.library.wsdl.borrows.BorrowInfo;
 import com.library.wsdl.borrows.UserInfo;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import entities.Borrows;
 import entities.Users;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +42,8 @@ public class BorrowsAction extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
 
     private List<Borrows> borrowList;
+
+    private Date today = Calendar.getInstance().getTime();
 
     public long getId() {
         return id;

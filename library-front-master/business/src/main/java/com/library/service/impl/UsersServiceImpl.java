@@ -72,6 +72,17 @@ public class UsersServiceImpl implements UsersService {
         return user;
     }
 
+    @Override
+    public Users remind(long id, boolean reminder) {
+        RemindCheckboxResponse response = client.remind(id, reminder);
+        UserInfo userInfo = response.getUserInfo();
+        Users user = new Users();
+        BeanUtils.copyProperties(userInfo, user);
+        user.setUser_id(userInfo.getUserId());
+        user.setReminder(userInfo.isReminder());
+        return user;
+    }
+
     private Borrows setBorrow(BorrowInfo borrowInfo){
         Borrows borrows = new Borrows();
         borrows.setBorrow_Id(borrowInfo.getBorrowId());

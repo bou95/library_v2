@@ -24,7 +24,11 @@ public class Users {
     @Size(message = "Le mot de passe de l'utilisateur doit comporter au moins 6 lettres",min = 6)
     private String password;
 
-    List<Borrows> borrows;
+    private boolean reminder;
+
+    private List<Borrows> borrows;
+
+    private List<Reservation> reservations;
 
     public Long getUser_id() {
         return user_id;
@@ -66,11 +70,27 @@ public class Users {
         this.password = password;
     }
 
+    public boolean isReminder() {
+        return reminder;
+    }
+
+    public void setReminder(boolean reminder) {
+        this.reminder = reminder;
+    }
+
     public List<Borrows> getBorrows() {
         return borrows;
     }
 
     public void setBorrows(List<Borrows> borrows) {
         this.borrows = borrows;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 }

@@ -2,15 +2,12 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.17 à 03:15:06 PM CET 
+// Généré le : 2019.02.11 à 06:02:30 PM CET 
 //
 
 
 package com.library.ws.reservations;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -29,8 +26,8 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="res_id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="book" type="{http://libraryservice/reservations}bookInfo"/&gt;
- *         &lt;element name="borrowers" type="{http://libraryservice/reservations}userInfo" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="index" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
+ *         &lt;element name="borrowers" type="{http://libraryservice/reservations}userInfo"/&gt;
+ *         &lt;element name="index" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -52,9 +49,9 @@ public class ReservationInfo {
     protected Long resId;
     @XmlElement(required = true)
     protected BookInfo book;
-    protected List<UserInfo> borrowers;
     @XmlElement(required = true)
-    protected BigInteger index;
+    protected UserInfo borrowers;
+    protected int index;
 
     /**
      * Obtient la valeur de la propriété resId.
@@ -105,55 +102,42 @@ public class ReservationInfo {
     }
 
     /**
-     * Gets the value of the borrowers property.
+     * Obtient la valeur de la propriété borrowers.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the borrowers property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getBorrowers().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link UserInfo }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link UserInfo }
+     *     
      */
-    public List<UserInfo> getBorrowers() {
-        if (borrowers == null) {
-            borrowers = new ArrayList<UserInfo>();
-        }
-        return this.borrowers;
+    public UserInfo getBorrowers() {
+        return borrowers;
+    }
+
+    /**
+     * Définit la valeur de la propriété borrowers.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link UserInfo }
+     *     
+     */
+    public void setBorrowers(UserInfo value) {
+        this.borrowers = value;
     }
 
     /**
      * Obtient la valeur de la propriété index.
      * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
      */
-    public BigInteger getIndex() {
+    public int getIndex() {
         return index;
     }
 
     /**
      * Définit la valeur de la propriété index.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
      */
-    public void setIndex(BigInteger value) {
+    public void setIndex(int value) {
         this.index = value;
     }
 

@@ -76,6 +76,17 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="getAllOutdatedBorrowsRequest">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="getAllOutdatedBorrowsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="borrowInfo" type="tns:borrowInfo" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <xs:complexType name="borrowInfo">
         <xs:sequence>
             <xs:element name="borrow_id" type="xs:long" nillable="true"/>

@@ -84,13 +84,9 @@ public class BorrowEndpoint {
         ServiceStatus serviceStatus = new ServiceStatus();
         ExtendBorrowResponse response = new ExtendBorrowResponse();
         Date today = Calendar.getInstance().getTime();
-        if(borrow.getExtend() == true) {
+        if(borrow.getExtend() == true || borrow.getTerm().before(today)) {
             serviceStatus.setStatusCode("FAIL");
-            serviceStatus.setMessage("Le prêt a déjà été prolongé");
-            response.setServiceStatus(serviceStatus);
-        } if(borrow.getTerm().before(today)){
-            serviceStatus.setStatusCode("FAIL");
-            serviceStatus.setMessage("Le prêt ne peut etre prolongé après la date de fin.");
+            serviceStatus.setMessage("Le prêt ne peut être prolongé");
             response.setServiceStatus(serviceStatus);
         } else {
             borrow.setExtend(true);
@@ -108,6 +104,8 @@ public class BorrowEndpoint {
     @ResponsePayload
     public DeleteBorrowResponse deleteBorrow(@RequestPayload DeleteBorrowRequest request) {
         Borrow borrow = borrowsService.getById(request.getBorrowId());
+        Books book = booksService.getBookById(borrow.getBook().getBook_id());
+        Long available = book.getAvailable();
         ServiceStatus serviceStatus = new ServiceStatus();
         DeleteBorrowResponse response = new DeleteBorrowResponse();
         if (borrow == null ) {
@@ -115,6 +113,7 @@ public class BorrowEndpoint {
             serviceStatus.setMessage("Le prêt n'existe pas");
             response.setServiceStatus(serviceStatus);
         } else {
+            book.setAvailable(available +1L);
             borrowsService.deleteById(request.getBorrowId());
             serviceStatus.setStatusCode("SUCCESS");
             serviceStatus.setMessage("Le pret a été supprimé");
@@ -123,6 +122,27 @@ public class BorrowEndpoint {
         return response;
     }
 
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllOutdatedBorrowsRequest")
+    @ResponsePayload
+    public GetAllOutdatedBorrowsResponse oudatedBorrows()throws DatatypeConfigurationException {
+        GetAllOutdatedBorrowsResponse response = new GetAllOutdatedBorrowsResponse();
+        List<Borrow> borrowList = new ArrayList<>();
+        List<BorrowInfo> borrowInfoList = new ArrayList<>();
+        for(Iterator<Borrow> borrowsIterator = borrowsService.getAllBorrow().iterator(); borrowsIterator.hasNext();){
+            Borrow borrow = borrowsIterator.next();
+            if (borrow.getTerm().compareTo(new Date()) < 0){
+                borrowList.add(borrow);
+            }
+        }
+        for (int i = 0; i < borrowList.size(); i++) {
+            BorrowInfo ob = setBorrowInfo(borrowList.get(i));
+
+            borrowInfoList.add(ob);
+        }
+        response.getBorrowInfo().addAll(borrowInfoList);
+        return response;
+
+    }
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllBorrowsRequest")
     @ResponsePayload
     public GetAllBorrowsResponse getAllBorrows() throws DatatypeConfigurationException {
@@ -130,11 +150,7 @@ public class BorrowEndpoint {
         List<BorrowInfo> borrowInfoList = new ArrayList<>();
         List<Borrow> borrowsList = borrowsService.getAllBorrow();
         for (int i = 0; i < borrowsList.size(); i++) {
-            BorrowInfo ob = new BorrowInfo();
-
-            ob.setBorrowId(borrowsList.get(i).getBorrow_id());
-            ob.setExtend(borrowsList.get(i).getExtend());
-            ob.setTerm(convertDate(borrowsList.get(i).getTerm()));
+            BorrowInfo ob = setBorrowInfo(borrowsList.get(i));
 
             borrowInfoList.add(ob);
         }

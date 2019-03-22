@@ -121,6 +121,8 @@ public class BookEndpoint {
             BookInfo ob = new BookInfo();
             BeanUtils.copyProperties(booksList.get(i), ob);
             ob.setBookId(booksList.get(i).getBook_id());
+            ob.setReservationListSize(booksList.get(i).getReservation().size());
+            ob.setBorrowListSize(booksList.get(i).getBorrowList().size());
             books.add(ob);
         }
         return books;

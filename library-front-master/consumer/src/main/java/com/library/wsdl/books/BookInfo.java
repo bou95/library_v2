@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.05.11 à 11:14:21 PM CEST 
+// Généré le : 2019.02.11 à 06:03:33 PM CET 
 //
 
 
@@ -32,6 +32,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="category" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="available" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="borrowInfo" type="{http://libraryservice/books}borrowInfo" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="reservationInfo" type="{http://libraryservice/books}reservationInfo" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="borrowListSize" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="reservationListSize" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -47,7 +50,10 @@ import javax.xml.bind.annotation.XmlType;
     "author",
     "category",
     "available",
-    "borrowInfo"
+    "borrowInfo",
+    "reservationInfo",
+    "borrowListSize",
+    "reservationListSize"
 })
 public class BookInfo {
 
@@ -63,6 +69,10 @@ public class BookInfo {
     protected Long available;
     @XmlElement(required = true)
     protected List<BorrowInfo> borrowInfo;
+    @XmlElement(required = true)
+    protected List<ReservationInfo> reservationInfo;
+    protected int borrowListSize;
+    protected int reservationListSize;
 
     /**
      * Obtient la valeur de la propriété bookId.
@@ -211,6 +221,67 @@ public class BookInfo {
             borrowInfo = new ArrayList<BorrowInfo>();
         }
         return this.borrowInfo;
+    }
+
+    /**
+     * Gets the value of the reservationInfo property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the reservationInfo property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getReservationInfo().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ReservationInfo }
+     * 
+     * 
+     */
+    public List<ReservationInfo> getReservationInfo() {
+        if (reservationInfo == null) {
+            reservationInfo = new ArrayList<ReservationInfo>();
+        }
+        return this.reservationInfo;
+    }
+
+    /**
+     * Obtient la valeur de la propriété borrowListSize.
+     * 
+     */
+    public int getBorrowListSize() {
+        return borrowListSize;
+    }
+
+    /**
+     * Définit la valeur de la propriété borrowListSize.
+     * 
+     */
+    public void setBorrowListSize(int value) {
+        this.borrowListSize = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété reservationListSize.
+     * 
+     */
+    public int getReservationListSize() {
+        return reservationListSize;
+    }
+
+    /**
+     * Définit la valeur de la propriété reservationListSize.
+     * 
+     */
+    public void setReservationListSize(int value) {
+        this.reservationListSize = value;
     }
 
 }

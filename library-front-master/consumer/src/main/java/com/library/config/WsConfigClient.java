@@ -1,9 +1,6 @@
 package com.library.config;
 
-import com.library.client.BorrowsClient;
-import com.library.client.EmployeesClient;
-import com.library.client.UsersClient;
-import com.library.client.BooksClient;
+import com.library.client.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -87,4 +84,23 @@ public class WsConfigClient {
             client.setUnmarshaller(marshallerEmployees);
             return client;
         }
+
+    /*
+    Config reservation
+     */
+    @Bean
+    public Jaxb2Marshaller marshallerReservations() {
+        Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
+        marshaller.setContextPath("com.library.wsdl.reservations");
+        return marshaller;
+    }
+
+    @Bean
+    public ReservationClient reservationClient(Jaxb2Marshaller marshallerReservations) {
+        ReservationClient client = new ReservationClient();
+        client.setDefaultUri("http://localhost:8080/ws/reservations.wsdl");
+        client.setMarshaller(marshallerReservations);
+        client.setUnmarshaller(marshallerReservations);
+        return client;
+    }
 }

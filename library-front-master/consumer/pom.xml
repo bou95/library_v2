@@ -114,6 +114,23 @@
                             </schemas>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>schema-reservation</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <generateDirectory>src/main/java</generateDirectory>
+                            <schemaDirectory>src/main/resources/java/reservations</schemaDirectory>
+                            <schemaLanguage>WSDL</schemaLanguage>
+                            <generatePackage>com.library.wsdl.reservations</generatePackage>
+                            <schemas>
+                                <schema>
+                                    <url>http://localhost:8080/ws/reservations.wsdl</url>
+                                </schema>
+                            </schemas>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>

@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.17 à 03:15:06 PM CET 
+// Généré le : 2019.02.11 à 06:02:30 PM CET 
 //
 
 
@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="bookId" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="userId" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="bookId" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,40 +37,16 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "bookId",
-    "userId"
+    "userId",
+    "bookId"
 })
 @XmlRootElement(name = "addReservationRequest")
 public class AddReservationRequest {
 
     @XmlElement(required = true, type = Long.class, nillable = true)
-    protected Long bookId;
-    @XmlElement(required = true, type = Long.class, nillable = true)
     protected Long userId;
-
-    /**
-     * Obtient la valeur de la propriété bookId.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
-     */
-    public Long getBookId() {
-        return bookId;
-    }
-
-    /**
-     * Définit la valeur de la propriété bookId.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
-     */
-    public void setBookId(Long value) {
-        this.bookId = value;
-    }
+    @XmlElement(required = true, type = Long.class, nillable = true)
+    protected Long bookId;
 
     /**
      * Obtient la valeur de la propriété userId.
@@ -94,6 +70,30 @@ public class AddReservationRequest {
      */
     public void setUserId(Long value) {
         this.userId = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété bookId.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getBookId() {
+        return bookId;
+    }
+
+    /**
+     * Définit la valeur de la propriété bookId.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setBookId(Long value) {
+        this.bookId = value;
     }
 
 }

@@ -28,7 +28,6 @@ public class BooksAction extends ActionSupport {
     private List<Books> bookInfoList;
 
 
-
     private Books books;
 
     public long getId() {

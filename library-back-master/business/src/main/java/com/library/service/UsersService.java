@@ -17,4 +17,8 @@ public interface UsersService {
     void delete(Long id);
 
     Users login(String email, String password);
+
+    Users saveRemind(Users user);
+
+    List<Users> findAllByReminder(boolean reminder);
 }

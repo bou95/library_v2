@@ -5,7 +5,7 @@
 Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-Généré le : 2019.01.17 à 03:15:06 PM CET 
+Généré le : 2019.02.11 à 06:02:30 PM CET 
 
   -->
   <bindings scd="x-schema::tns" xmlns:tns="http://libraryservice/reservations">
@@ -29,6 +29,18 @@ Généré le : 2019.01.17 à 03:15:06 PM CET
     </bindings>
     <bindings scd="tns:getReservationByIdResponse">
       <class ref="com.library.ws.reservations.GetReservationByIdResponse"/>
+    </bindings>
+    <bindings scd="tns:getAllReservationsRequest">
+      <class ref="com.library.ws.reservations.GetAllReservationsRequest"/>
+    </bindings>
+    <bindings scd="tns:getAllReservationsResponse">
+      <class ref="com.library.ws.reservations.GetAllReservationsResponse"/>
+    </bindings>
+    <bindings scd="tns:getAllReservationsByUserRequest">
+      <class ref="com.library.ws.reservations.GetAllReservationsByUserRequest"/>
+    </bindings>
+    <bindings scd="tns:getAllReservationsByUserResponse">
+      <class ref="com.library.ws.reservations.GetAllReservationsByUserResponse"/>
     </bindings>
     <bindings scd="tns:deleteReservationRequest">
       <class ref="com.library.ws.reservations.DeleteReservationRequest"/>

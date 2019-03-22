@@ -71,7 +71,10 @@
                 class="com.library.action.UsersAction"
                 method="doLogin">
             <result name="input">WEB-INF/jsp/users/login.jsp</result>
-            <result name="success" type="redirectAction">home</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">user</param>
+                <param name="id">${users.user_id}</param>
+            </result>
             <result name="error">WEB-INF/jsp/error.jsp</result>
         </action>
 
@@ -79,6 +82,7 @@
                 class="com.library.action.UsersAction"
                 method="doLogout">
             <result name="success" type="redirectAction">home</result>
+            <result name="error">WEB-INF/jsp/error.jsp</result>
         </action>
 
         <!-- Borrow -->
@@ -93,7 +97,6 @@
             </result>
             <result name="error">WEB-INF/jsp/error.jsp</result>
         </action>
-
 
         <action name="borrow"
                 class="com.library.action.BorrowsAction"
@@ -117,6 +120,37 @@
                 <param name="id">${borrows.borrow_Id}</param>
             </result>
             <result name="error">WEB-INF/jsp/borrows/extend.jsp</result>
+        </action>
+
+        <action name="createreservation"
+                class="com.library.action.ReservationsAction"
+                method="doCreate">
+            <result name="input">WEB-INF/jsp/reservations/newreservation.jsp</result>
+            <result name="success" type="redirectAction">home</result>
+        </action>
+
+        <action name="reservation"
+                class="com.library.action.ReservationsAction"
+                method="getById">
+            <result name="success">WEB-INF/jsp/reservations/reservation</result>
+        </action>
+        
+        <action name="cancel"
+                class="com.library.action.ReservationsAction"
+                method="cancelReservation">
+            <result name="success" type="redirectAction">home</result>
+            <result name="error">WEB-INF/jsp/error.jsp</result>
+        </action>
+
+        <action name="checkbox"
+                class="com.library.action.UsersAction"
+                method="checkbox">
+            <result name="input">WEB-INF/jsp/users/remind.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">user</param>
+                <param name="id">${users.user_id}</param>
+            </result>
+            <result name="error">WEB-INF/jsp/error.jsp</result>
         </action>
 
     </package>

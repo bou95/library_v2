@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.17 à 03:15:06 PM CET 
+// Généré le : 2019.02.11 à 06:02:30 PM CET 
 //
 
 
@@ -82,6 +82,38 @@ public class ObjectFactory {
      */
     public GetReservationByIdResponse createGetReservationByIdResponse() {
         return new GetReservationByIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAllReservationsRequest }
+     * 
+     */
+    public GetAllReservationsRequest createGetAllReservationsRequest() {
+        return new GetAllReservationsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAllReservationsResponse }
+     * 
+     */
+    public GetAllReservationsResponse createGetAllReservationsResponse() {
+        return new GetAllReservationsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAllReservationsByUserRequest }
+     * 
+     */
+    public GetAllReservationsByUserRequest createGetAllReservationsByUserRequest() {
+        return new GetAllReservationsByUserRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAllReservationsByUserResponse }
+     * 
+     */
+    public GetAllReservationsByUserResponse createGetAllReservationsByUserResponse() {
+        return new GetAllReservationsByUserResponse();
     }
 
     /**

@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.05.11 à 11:14:21 PM CEST 
+// Généré le : 2019.02.11 à 06:03:33 PM CET 
 //
 
 
@@ -32,6 +32,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="borrowInfo" type="{http://libraryservice/users}borrowInfo" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="reservationInfo" type="{http://libraryservice/users}reservationInfo" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="reminder" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -47,7 +49,9 @@ import javax.xml.bind.annotation.XmlType;
     "firstName",
     "email",
     "password",
-    "borrowInfo"
+    "borrowInfo",
+    "reservationInfo",
+    "reminder"
 })
 public class UserInfo {
 
@@ -63,6 +67,9 @@ public class UserInfo {
     protected String password;
     @XmlElement(required = true)
     protected List<BorrowInfo> borrowInfo;
+    @XmlElement(required = true)
+    protected List<ReservationInfo> reservationInfo;
+    protected Boolean reminder;
 
     /**
      * Obtient la valeur de la propriété userId.
@@ -211,6 +218,59 @@ public class UserInfo {
             borrowInfo = new ArrayList<BorrowInfo>();
         }
         return this.borrowInfo;
+    }
+
+    /**
+     * Gets the value of the reservationInfo property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the reservationInfo property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getReservationInfo().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ReservationInfo }
+     * 
+     * 
+     */
+    public List<ReservationInfo> getReservationInfo() {
+        if (reservationInfo == null) {
+            reservationInfo = new ArrayList<ReservationInfo>();
+        }
+        return this.reservationInfo;
+    }
+
+    /**
+     * Obtient la valeur de la propriété reminder.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isReminder() {
+        return reminder;
+    }
+
+    /**
+     * Définit la valeur de la propriété reminder.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setReminder(Boolean value) {
+        this.reminder = value;
     }
 
 }

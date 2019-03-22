@@ -24,6 +24,8 @@
             <xs:element name="available" type="xs:long" nillable="true"/>
             <xs:element name="borrowInfo" type="tns:borrowInfo" maxOccurs="unbounded"/>
             <xs:element name="reservationInfo" type="tns:reservationInfo" maxOccurs="unbounded"/>
+            <xs:element name="borrowListSize" type="xs:int" />
+            <xs:element name="reservationListSize" type="xs:int"/>
         </xs:sequence>
     </xs:complexType>
 

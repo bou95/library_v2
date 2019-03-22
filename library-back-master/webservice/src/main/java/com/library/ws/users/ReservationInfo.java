@@ -2,15 +2,12 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.17 à 03:15:05 PM CET 
+// Généré le : 2019.02.11 à 06:02:28 PM CET 
 //
 
 
 package com.library.ws.users;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -28,9 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="res_id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="index" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="book" type="{http://libraryservice/users}bookInfo"/&gt;
- *         &lt;element name="borrowers" type="{http://libraryservice/users}userInfo" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="index" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -42,19 +38,16 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "reservationInfo", propOrder = {
     "resId",
-    "book",
-    "borrowers",
-    "index"
+    "index",
+    "book"
 })
 public class ReservationInfo {
 
     @XmlElement(name = "res_id", required = true, type = Long.class, nillable = true)
     protected Long resId;
+    protected int index;
     @XmlElement(required = true)
     protected BookInfo book;
-    protected List<UserInfo> borrowers;
-    @XmlElement(required = true)
-    protected BigInteger index;
 
     /**
      * Obtient la valeur de la propriété resId.
@@ -81,6 +74,22 @@ public class ReservationInfo {
     }
 
     /**
+     * Obtient la valeur de la propriété index.
+     * 
+     */
+    public int getIndex() {
+        return index;
+    }
+
+    /**
+     * Définit la valeur de la propriété index.
+     * 
+     */
+    public void setIndex(int value) {
+        this.index = value;
+    }
+
+    /**
      * Obtient la valeur de la propriété book.
      * 
      * @return
@@ -102,59 +111,6 @@ public class ReservationInfo {
      */
     public void setBook(BookInfo value) {
         this.book = value;
-    }
-
-    /**
-     * Gets the value of the borrowers property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the borrowers property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getBorrowers().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link UserInfo }
-     * 
-     * 
-     */
-    public List<UserInfo> getBorrowers() {
-        if (borrowers == null) {
-            borrowers = new ArrayList<UserInfo>();
-        }
-        return this.borrowers;
-    }
-
-    /**
-     * Obtient la valeur de la propriété index.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getIndex() {
-        return index;
-    }
-
-    /**
-     * Définit la valeur de la propriété index.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setIndex(BigInteger value) {
-        this.index = value;
     }
 
 }

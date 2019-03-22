@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.05.11 à 11:14:21 PM CEST 
+// Généré le : 2019.02.11 à 06:03:33 PM CET 
 //
 
 
@@ -101,6 +101,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RemindCheckboxRequest }
+     * 
+     */
+    public RemindCheckboxRequest createRemindCheckboxRequest() {
+        return new RemindCheckboxRequest();
+    }
+
+    /**
+     * Create an instance of {@link RemindCheckboxResponse }
+     * 
+     */
+    public RemindCheckboxResponse createRemindCheckboxResponse() {
+        return new RemindCheckboxResponse();
+    }
+
+    /**
      * Create an instance of {@link DeleteUserRequest }
      * 
      */
@@ -138,6 +154,14 @@ public class ObjectFactory {
      */
     public BorrowInfo createBorrowInfo() {
         return new BorrowInfo();
+    }
+
+    /**
+     * Create an instance of {@link ReservationInfo }
+     * 
+     */
+    public ReservationInfo createReservationInfo() {
+        return new ReservationInfo();
     }
 
     /**

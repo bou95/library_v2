@@ -29,7 +29,7 @@
 
                 <div class="row">
                     <div class="form-group">
-                        <s:textfield class="form-inline" name="password" label="mot de passe" placeholder="mot de passe" requiredLabel="true" type="password" />
+                        <s:textfield class="form-inline" name="password" label="Mot de passe" placeholder="mot de passe" requiredLabel="true" type="password" />
                     </div>
                 </div>
                     <div class="form-group">

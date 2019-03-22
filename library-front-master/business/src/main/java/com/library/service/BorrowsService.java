@@ -16,4 +16,6 @@ public interface BorrowsService {
     Borrows getById(long id);
 
     List<Borrows> getAllBorrow();
+
+    List<Borrows> outdatedBorrows();
 }

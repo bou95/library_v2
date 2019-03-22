@@ -36,6 +36,7 @@ public class Users {
     @OneToMany(mappedBy = "borrowers", cascade =CascadeType.ALL, fetch=FetchType.EAGER)
     private List<Reservation> reservation;
 
+    private boolean reminder;
 
     public String getLastName() {
         return lastName;
@@ -91,5 +92,13 @@ public class Users {
 
     public void setReservation(List<Reservation> reservation) {
         this.reservation = reservation;
+    }
+
+    public boolean isReminder() {
+        return reminder;
+    }
+
+    public void setReminder(boolean reminder) {
+        this.reminder = reminder;
     }
 }

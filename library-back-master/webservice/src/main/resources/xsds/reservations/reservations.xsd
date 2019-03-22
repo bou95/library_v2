@@ -5,8 +5,8 @@
     <xs:element name="addReservationRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="bookId" type="xs:long" nillable="true"/>
                 <xs:element name="userId" type="xs:long" nillable="true"/>
+                <xs:element name="bookId" type="xs:long" nillable="true"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -31,6 +31,33 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="reservationInfo" type="tns:reservationInfo"/>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllReservationsRequest">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="getAllReservationsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reservationInfo" type="tns:reservationInfo" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllReservationsByUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getAllReservationsByUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reservationInfo" type="tns:reservationInfo" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -56,8 +83,8 @@
         <xs:sequence>
             <xs:element name="res_id" type="xs:long" nillable="true"/>
             <xs:element name="book" type="tns:bookInfo"/>
-            <xs:element name="borrowers" type="tns:userInfo" maxOccurs="unbounded" minOccurs="0"/>
-            <xs:element name="index" type="xs:integer"/>
+            <xs:element name="borrowers" type="tns:userInfo"/>
+            <xs:element name="index" type="xs:int"/>
         </xs:sequence>
     </xs:complexType>
 

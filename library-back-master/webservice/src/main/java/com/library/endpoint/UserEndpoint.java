@@ -1,6 +1,7 @@
 package com.library.endpoint;
 
 
+import com.library.model.entities.Reservation;
 import com.library.ws.users.*;
 import com.library.model.entities.Borrow;
 import com.library.model.entities.Users;
@@ -12,10 +13,7 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
@@ -37,11 +35,19 @@ public class UserEndpoint {
         BeanUtils.copyProperties(user, userInfo);
         userInfo.setUserId(user.getUser_id());
         List<BorrowInfo> borrowsList = new ArrayList<>();
+        List<ReservationInfo> reservations = new ArrayList<>();
         for (int i = 0; i < user.getBorrowList().size(); i++) {
             BorrowInfo ob = setBorrowInfo(user.getBorrowList().get(i));
             borrowsList.add(ob);
         }
+
+        Iterator<Reservation> it2 = user.getReservation().iterator();
+        while (it2.hasNext()) {
+            Reservation reservation = it2.next();
+            reservations.add(setReservationInfo(reservation));
+        }
         userInfo.getBorrowInfo().addAll(borrowsList);
+        userInfo.getReservationInfo().addAll(reservations);
         response.setUserInfo(userInfo);
         return response;
     }
@@ -56,6 +62,7 @@ public class UserEndpoint {
         user.setFirstName(request.getFirstName());
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
+        user.setReminder(false);
         boolean flag = usersService.insert(user);
         if (flag == false) {
             serviceStatus.setStatusCode("CONFLICT");
@@ -130,6 +137,30 @@ public class UserEndpoint {
         }
         return response;
     }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "remindCheckboxRequest")
+    @ResponsePayload
+    public RemindCheckboxResponse remind(@RequestPayload RemindCheckboxRequest request){
+        RemindCheckboxResponse response =new RemindCheckboxResponse();
+        ServiceStatus serviceStatus = new ServiceStatus();
+        Users user = usersService.getById(request.getUserId());
+        if (user == null ) {
+            serviceStatus.setStatusCode("FAIL");
+            serviceStatus.setMessage("L'utilisateur n'existe pas.");
+            response.setServiceStatus(serviceStatus);
+        } else {
+            user.setReminder(request.isRemind());
+            usersService.saveRemind(user);
+            UserInfo userInfo = new UserInfo();
+            BeanUtils.copyProperties(user, userInfo);
+            userInfo.setUserId(user.getUser_id());
+            serviceStatus.setMessage("Votre option a été modifiée");
+            serviceStatus.setMessage("SUCCES");
+            response.setUserInfo(userInfo);
+            response.setServiceStatus(serviceStatus);
+        }
+        return response;
+    }
     
     private BorrowInfo setBorrowInfo(Borrow borrow) throws DatatypeConfigurationException {
         BorrowInfo borrowInfo = new BorrowInfo();
@@ -148,5 +179,17 @@ public class UserEndpoint {
         c.setTime(date);
         XMLGregorianCalendar d = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
         return d;
+    }
+
+    private ReservationInfo setReservationInfo(Reservation reservation){
+        ReservationInfo reservationInfo = new ReservationInfo();
+        reservationInfo.setResId(reservation.getRes_id());
+        reservationInfo.setIndex(reservation.getIndex());
+
+        BookInfo bookInfo = new BookInfo();
+        bookInfo.setBookId(reservation.getBook().getBook_id());
+        BeanUtils.copyProperties(reservation.getBook(), bookInfo);
+
+        return reservationInfo;
     }
 }

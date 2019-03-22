@@ -53,4 +53,15 @@ public class UsersServiceImpl implements UsersService {
 		return usersRepo.findUsersByEmailAndPassword(email, password);
 	}
 
+    @Override
+    public Users saveRemind(Users user) {
+        Users users = usersRepo.save(user);
+        return users;
+    }
+
+    @Override
+    public List<Users> findAllByReminder(boolean reminder) {
+        return usersRepo.findAllUsersByReminder(reminder);
+    }
+
 }

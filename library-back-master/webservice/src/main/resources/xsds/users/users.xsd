@@ -24,6 +24,7 @@
             <xs:element name="password" type="xs:string"/>
             <xs:element name="borrowInfo" type="tns:borrowInfo" maxOccurs="unbounded"/>
             <xs:element name="reservationInfo" type="tns:reservationInfo" maxOccurs="unbounded"/>
+            <xs:element name="reminder" type="xs:boolean" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -60,6 +61,24 @@
         </xs:complexType>
     </xs:element>
     <xs:element name="updateUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xs:element name="userInfo" type="tns:userInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="remindCheckboxRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user_id" type="xs:long"/>
+                <xs:element name="remind" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="remindCheckboxResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="serviceStatus" type="tns:serviceStatus"/>
@@ -113,9 +132,8 @@
     <xs:complexType name="reservationInfo">
         <xs:sequence>
             <xs:element name="res_id" type="xs:long" nillable="true"/>
+            <xs:element name="index" type="xs:int"/>
             <xs:element name="book" type="tns:bookInfo"/>
-            <xs:element name="borrowers" type="tns:userInfo" maxOccurs="unbounded" minOccurs="0"/>
-            <xs:element name="index" type="xs:integer"/>
         </xs:sequence>
     </xs:complexType>
 

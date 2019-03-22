@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.17 à 03:15:05 PM CET 
+// Généré le : 2019.02.11 à 06:02:28 PM CET 
 //
 
 
@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="borrowInfo" type="{http://libraryservice/users}borrowInfo" maxOccurs="unbounded"/&gt;
  *         &lt;element name="reservationInfo" type="{http://libraryservice/users}reservationInfo" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="reminder" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -49,7 +50,8 @@ import javax.xml.bind.annotation.XmlType;
     "email",
     "password",
     "borrowInfo",
-    "reservationInfo"
+    "reservationInfo",
+    "reminder"
 })
 public class UserInfo {
 
@@ -67,6 +69,7 @@ public class UserInfo {
     protected List<BorrowInfo> borrowInfo;
     @XmlElement(required = true)
     protected List<ReservationInfo> reservationInfo;
+    protected Boolean reminder;
 
     /**
      * Obtient la valeur de la propriété userId.
@@ -244,6 +247,30 @@ public class UserInfo {
             reservationInfo = new ArrayList<ReservationInfo>();
         }
         return this.reservationInfo;
+    }
+
+    /**
+     * Obtient la valeur de la propriété reminder.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isReminder() {
+        return reminder;
+    }
+
+    /**
+     * Définit la valeur de la propriété reminder.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setReminder(Boolean value) {
+        this.reminder = value;
     }
 
 }

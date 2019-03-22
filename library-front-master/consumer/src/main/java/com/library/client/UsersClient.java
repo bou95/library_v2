@@ -1,6 +1,8 @@
 package com.library.client;
 
 import com.library.wsdl.users.*;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
@@ -45,6 +47,14 @@ public class UsersClient extends WebServiceGatewaySupport {
         request.setPassword(password);
         LoginUserResponse response = (LoginUserResponse) getWebServiceTemplate().marshalSendAndReceive(
                 request, new SoapActionCallback("http://localhost:8080/ws/loginUserRequest"));
+        return response;
+    }
+
+    public RemindCheckboxResponse remind(long id, boolean reminder){
+        RemindCheckboxRequest request = new RemindCheckboxRequest();
+        request.setUserId(id);
+        request.setRemind(reminder);
+        RemindCheckboxResponse response = (RemindCheckboxResponse) getWebServiceTemplate().marshalSendAndReceive(request, new SoapActionCallback("http://localhost:8080/ws/remindCheckboxRequest"));
         return response;
     }
 }

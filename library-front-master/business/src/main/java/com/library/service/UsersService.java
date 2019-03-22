@@ -15,4 +15,6 @@ public interface UsersService {
     ServiceStatus update(Users user);
 
     Users login(String email, String password);
+
+    Users remind(long id, boolean reminder);
 }

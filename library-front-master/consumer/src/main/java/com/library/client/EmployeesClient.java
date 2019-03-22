@@ -1,6 +1,8 @@
 package com.library.client;
 
 import com.library.wsdl.employees.*;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 

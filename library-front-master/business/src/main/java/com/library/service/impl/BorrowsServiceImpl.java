@@ -61,6 +61,18 @@ public class BorrowsServiceImpl implements BorrowsService {
         return borrowsList;
     }
 
+    @Override
+    public List<Borrows> outdatedBorrows(){
+        GetAllOutdatedBorrowsResponse response = client.outdatedBorrows();
+        List<BorrowInfo> borrowInfoList = response.getBorrowInfo();
+        List<Borrows> borrows = new ArrayList<>();
+        for(int i = 0; borrowInfoList.size() < 0; i++){
+            Borrows borrow = setBorrows(borrowInfoList.get(i));
+            borrows.add(borrow);
+        }
+        return borrows;
+    }
+
     public Borrows setBorrows(BorrowInfo borrowInfo) {
         //users
         Users users = new Users();
