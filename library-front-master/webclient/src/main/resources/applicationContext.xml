@@ -11,8 +11,8 @@
     <!-- Prend en compte la configuration des injections (@Inject...) -->
     <context:annotation-config/>
 
-    <!-- Scanne les packages pour trouver les beans qui se déclarent (@Named...) -->
-    <context:component-scan base-package="com.library"/>
+    <!-- Scanne les packages pour trouver les beans qui se déclarent (@Named...)
+    <context:component-scan base-package="com.library"/> -->
 
     <!-- ... -->
 </beans>

@@ -4,6 +4,9 @@ import java.util.*;
 
 
 import com.library.service.BorrowsService;
+import com.library.service.UsersService;
+import com.library.service.impl.BorrowsServiceImpl;
+import com.library.service.impl.UsersServiceImpl;
 import entities.Borrows;
 import entities.Users;
 import org.springframework.batch.core.StepContribution;
@@ -28,20 +31,18 @@ public class BatchTasklet implements Tasklet {
     @Autowired
     private ApacheMail mail;
 
-    private List<Borrows> outdated;
-
-    private List<Users> userList;
-
-
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
         System.out.println(message);
 
-        outdated = borrowsService.outdatedBorrows();
+        List<Borrows> outdated = (borrowsService.outdatedBorrows());
 
-        for(int i=0; i < outdated.size(); i++){
-            Users user = outdated.get(i).getBorrower();
-            mail.send(user);
-        }
+        if (outdated.size() > 0 ) {
+            for (int i = 0; i < outdated.size(); i++) {
+                Users user = outdated.get(i).getBorrower();
+                mail.send(user);
+            }
+        }else
+            System.out.println("La liste de livre en retard est vide " + new Date());
 
         return RepeatStatus.FINISHED;
     }

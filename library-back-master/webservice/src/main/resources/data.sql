@@ -3,3 +3,4 @@ INSERT INTO BOOKS(AUTHOR, AVAILABLE, CATEGORY, TITLE) VALUES ('JJR Tolkien', 3, 
 INSERT INTO BOOKS(AUTHOR, AVAILABLE, CATEGORY, TITLE) VALUES ('George RR Martin', 0, 'Heroic Fantasy', 'Le Trone de Fer');
 INSERT INTO BOOKS(AUTHOR, AVAILABLE, CATEGORY, TITLE) VALUES ('JJR Tolkien', 1, 'Heroic Fantasy', 'Bilbo Le Hobbit');
 INSERT INTO USERS(EMAIL, FIRSTNAME, LASTNAME, PASSWORD, REMINDER) VALUES ('bou.jean@test.com', 'Bou', 'Jean', 'testtest', false);
+INSERT INTO USERS(EMAIL, FIRSTNAME, LASTNAME, PASSWORD, REMINDER) VALUES ('toto@test.com', 'to', 'to', 'testtest', false);

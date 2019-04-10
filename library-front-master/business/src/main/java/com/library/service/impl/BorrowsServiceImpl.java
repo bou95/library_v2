@@ -54,7 +54,7 @@ public class BorrowsServiceImpl implements BorrowsService {
         GetAllBorrowsResponse response = client.findAllBorrows();
         List<BorrowInfo> borrowInfoList = response.getBorrowInfo();
         List<Borrows> borrowsList = new ArrayList<>();
-        for(int i = 0; borrowInfoList.size() < 0; i++){
+        for(int i = 0; i < borrowInfoList.size(); i++){
             Borrows borrows = setBorrows(borrowInfoList.get(i));
             borrowsList.add(borrows);
         }
@@ -66,7 +66,7 @@ public class BorrowsServiceImpl implements BorrowsService {
         GetAllOutdatedBorrowsResponse response = client.outdatedBorrows();
         List<BorrowInfo> borrowInfoList = response.getBorrowInfo();
         List<Borrows> borrows = new ArrayList<>();
-        for(int i = 0; borrowInfoList.size() < 0; i++){
+        for(int i = 0; i < borrowInfoList.size(); i++){
             Borrows borrow = setBorrows(borrowInfoList.get(i));
             borrows.add(borrow);
         }

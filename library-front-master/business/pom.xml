@@ -24,10 +24,6 @@
             <groupId>com.library</groupId>
             <artifactId>consumer</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.library</groupId>
-            <artifactId>model</artifactId>
-        </dependency>
     </dependencies>
 
     <build>

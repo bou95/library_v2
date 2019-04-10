@@ -58,8 +58,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.library</groupId>
-			<artifactId>web-client</artifactId>
-            <scope>compile</scope>
+			<artifactId>business</artifactId>
 		</dependency>
 	</dependencies>
 

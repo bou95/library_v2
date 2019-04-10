@@ -1,5 +1,0 @@
-com\library\batch\App.class
-com\library\batch\scheduler\BatchLauncher.class
-com\library\batch\scheduler\BatchTasklet.class
-com\library\batch\mail\ApacheMail.class
-com\library\batch\scheduler\AppConfiguration.class

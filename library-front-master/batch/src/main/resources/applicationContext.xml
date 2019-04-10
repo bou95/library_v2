@@ -10,7 +10,7 @@
  http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
 	<context:component-scan
-		base-package="com.library.batch" />
+		base-package="com.library" />
 
 	<batch:job id="scheduledJob">
 		<batch:step id="jobStep">

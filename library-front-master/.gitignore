@@ -27,6 +27,6 @@
 business/target/
 model/target/
 consumer/target/
-batcj_/target/
+batch/target/
 batch_/target/
 webclient/target/
