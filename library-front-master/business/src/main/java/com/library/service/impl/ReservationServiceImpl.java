@@ -51,6 +51,18 @@ public class ReservationServiceImpl implements ReservationService {
         return reservations;
     }
 
+    @Override
+    public List<Reservation> getAllReservations() {
+        GetAllReservationsResponse response = client.getALlReservations();
+        List<ReservationInfo> reservationInfoList = response.getReservationInfo();
+        List<Reservation> reservations = new ArrayList<>();
+        for(ReservationInfo reservationInfo: reservationInfoList){
+            Reservation reservation = setReservation(reservationInfo);
+            reservations.add(reservation);
+        }
+        return reservations;
+    }
+
 
     private Reservation setReservation(ReservationInfo reservationInfo){
         Reservation reservation = new Reservation();

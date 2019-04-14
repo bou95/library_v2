@@ -20,7 +20,7 @@
             <div class="form-control">
                 <s:form action="cancel">
                     <div class="row">
-                        <div class="form-gorup">
+                        <div class="form-group">
                             <s:select class="form-inline" name="reservations.res_Id"
                                       list="reservationList" listKey="res_Id" listValue="book.title"
                                       emptyOption="true"

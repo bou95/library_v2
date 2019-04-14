@@ -26,13 +26,15 @@
                         <li>Prénom : <s:property value="users.firstName" /></li>
                         <li>Nom : <s:property value="users.lastName" /></li>
                         <li>email : <s:property value="users.email" /></li>
-                        <li><s:a action="checkbox"> Rappel fin de prêt : </s:a> <s:if test="#users.reminder==true">Activé</s:if>
+                        <li><s:a action="checkbox"> Rappel fin de prêt : </s:a> <s:if test="#user.reminder == true">Activé</s:if>
                             <s:else>Désactivé</s:else>
                         </li>
                     </ul>
                 </div>
 
             </div>
+
+            <div>
                 <h4> Vos prêts en cours</h4>
                 <br/>
                     <table class="table table-bordered table-striped table-condensed">
@@ -48,7 +50,7 @@
                         <s:set var="currentDate" value="%{new java.util.Date()}"/>
                         <s:iterator value="users.borrows" var="borrows">
                             <tr>
-                                <td><s:a action="borrow"><s:property value="book.title"/> </s:a></td>
+                                <td><s:a action="borrow"><s:param name="id" value="borrow_Id"/><s:property value="book.title"/> </s:a></td>
                                 <td><s:property value="term"/> </td>
                                 <s:if test="#borrows.extend == true">
                                 <td>Le pret n'est pas prolongeable</td>
@@ -59,7 +61,10 @@
                         </s:iterator>
                         </tbody>
                     </table>
+                <button><s:a action="extendborrow"> Prolonger un prêt</s:a> </button>
+            </div>
 
+            <div>
             <h4> Vos reservations</h4>
             <br/>
             <table class="table table-bordered table-striped table-condensed">
@@ -67,19 +72,19 @@
                 <tr>
                     <th>Livre</th>
                     <th>Position dans la liste d'attente</th>
-                    <th>Annuler une reservation</th>
                 </tr>
                 </thead>
 
                 <tbody>
                 <s:iterator value="users.reservations" var="reservations">
                 <tr>
-                    <td><s:property value="book.title"/></td>
+                    <td><s:a action="reservation"><s:param name="id" value="res_Id"/><s:property value="book.title"/></s:a></td>
                     <td><s:property value="index"/></td>
-                    <td><s:a action="cancel"><s:param name="id" value="res_Id"/>Annuler une reservation</s:a></td>
                     </s:iterator>
                 </tbody>
             </table>
+                <button><s:a action="cancel"> Annuler une réservation</s:a> </button>
+            </div>
 
         </section>
     </div>

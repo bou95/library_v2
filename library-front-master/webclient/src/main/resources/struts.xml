@@ -132,13 +132,17 @@
         <action name="reservation"
                 class="com.library.action.ReservationsAction"
                 method="getById">
-            <result name="success">WEB-INF/jsp/reservations/reservation</result>
+            <result name="success">WEB-INF/jsp/reservations/reservation.jsp</result>
         </action>
         
         <action name="cancel"
                 class="com.library.action.ReservationsAction"
                 method="cancelReservation">
-            <result name="success" type="redirectAction">home</result>
+            <result name="input">WEB-INF/jsp/reservations/cancel.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">user</param>
+                <param name="id">${user.user_id}</param>
+            </result>
             <result name="error">WEB-INF/jsp/error.jsp</result>
         </action>
 

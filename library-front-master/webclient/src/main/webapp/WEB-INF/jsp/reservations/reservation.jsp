@@ -29,9 +29,9 @@
 
                 <tbody>
                 <tr>
-                    <td><s:property value="reservation.borrower.lastName "/> <s:property value=" reservation.borrower.firstName"/></td>
-                    <td><s:property value="reservation.book.title"/> - <s:property value="reservation.book.author"/></td>
-                    <td><s:property value="reservation.index"/></td>
+                    <td><s:property value="reservations.borrower.lastName "/> <s:property value=" reservations.borrower.firstName"/></td>
+                    <td><s:property value="reservations.book.title"/> - <s:property value="reservations.book.author"/></td>
+                    <td><s:property value="reservations.index"/></td>
                 </tr>
                 </tbody>
             </table>

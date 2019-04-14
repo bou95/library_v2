@@ -30,10 +30,10 @@ public class Users {
     @Size(message = "Le mot de passe de l'utilisateur doit comporter au moins 3 lettres",min = 3)
     private String password;
 
-    @OneToMany(mappedBy = "borrower", cascade =CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "borrower", fetch=FetchType.EAGER)
     private List<Borrow> borrowList;
 
-    @OneToMany(mappedBy = "borrowers", cascade =CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "borrowers", fetch=FetchType.EAGER)
     private List<Reservation> reservation;
 
     private boolean reminder;

@@ -3,6 +3,7 @@ package com.library.action;
 import com.library.service.BooksService;
 import com.opensymphony.xwork2.ActionSupport;
 import entities.Books;
+import entities.Borrows;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,8 +28,9 @@ public class BooksAction extends ActionSupport {
 
     private List<Books> bookInfoList;
 
-
     private Books books;
+
+    Borrows borrows;
 
     public long getId() {
         return id;
@@ -84,6 +86,14 @@ public class BooksAction extends ActionSupport {
 
     public void setBooks(Books books) {
         this.books = books;
+    }
+
+    public Borrows getBorrows() {
+        return borrows;
+    }
+
+    public void setBorrows(Borrows borrows) {
+        this.borrows = borrows;
     }
 
     public String doCreate(){

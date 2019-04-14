@@ -4,10 +4,9 @@ import java.util.*;
 
 
 import com.library.service.BorrowsService;
-import com.library.service.UsersService;
-import com.library.service.impl.BorrowsServiceImpl;
-import com.library.service.impl.UsersServiceImpl;
+import com.library.service.ReservationService;
 import entities.Borrows;
+import entities.Reservation;
 import entities.Users;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
@@ -29,6 +28,9 @@ public class BatchTasklet implements Tasklet {
     BorrowsService borrowsService;
 
     @Autowired
+    ReservationService reservationService;
+
+    @Autowired
     private ApacheMail mail;
 
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
@@ -36,13 +38,31 @@ public class BatchTasklet implements Tasklet {
 
         List<Borrows> outdated = (borrowsService.outdatedBorrows());
 
-        if (outdated.size() > 0 ) {
-            for (int i = 0; i < outdated.size(); i++) {
-                Users user = outdated.get(i).getBorrower();
-                mail.send(user);
+        if(outdated.size() > 0 ) {
+            for (Borrows borrows : outdated) {
+                Users users = borrows.getBorrower();
+                mail.send(users);
             }
         }else
-            System.out.println("La liste de livre en retard est vide " + new Date());
+            System.out.println("Aucun livre ");
+
+        List<Borrows> borrows = (borrowsService.getAllBorrow());
+        for(Borrows borrow: borrows){
+            if(((borrow.getTerm().toGregorianCalendar().getTime().getTime() - new Date().getTime()) <= 366419394)
+                    && borrow.getBorrower().isReminder()){
+                mail.reminder(borrow);
+            }
+            System.out.println(borrow.getTerm().toGregorianCalendar().getTime().getTime() - new Date().getTime() );
+        }
+
+        List<Reservation> reservations =(reservationService.getAllReservations());
+        for(Reservation reservation: reservations){
+            if(reservation.getBook().getAvailable() > 0){
+                if(reservation.getIndex() == 1){
+                    mail.reservations(reservation.getBorrower(), reservation.getBook());
+                }
+            }
+        }
 
         return RepeatStatus.FINISHED;
     }

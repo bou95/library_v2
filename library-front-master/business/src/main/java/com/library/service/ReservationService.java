@@ -15,4 +15,6 @@ public interface ReservationService {
     ServiceStatus deleteById(long id);
 
     List<Reservation> getAllReservationsByUser(long id);
+
+    List<Reservation> getAllReservations();
 }

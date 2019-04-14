@@ -5,6 +5,7 @@ import com.library.service.ReservationService;
 import com.library.service.UsersService;
 import com.library.wsdl.reservations.BookInfo;
 import com.library.wsdl.reservations.UserInfo;
+import com.library.wsdl.reservations.ServiceStatus;
 import com.opensymphony.xwork2.ActionSupport;
 import entities.Reservation;
 import entities.Users;
@@ -34,6 +35,8 @@ public class ReservationsAction extends ActionSupport implements SessionAware {
     private Reservation reservations;
 
     private List<Reservation> reservationList;
+
+    Users user;
 
     private Map<String, Object> session;
 
@@ -85,6 +88,14 @@ public class ReservationsAction extends ActionSupport implements SessionAware {
         return reservationList;
     }
 
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
     public void setReservationList(List<Reservation> reservationList) {
         this.reservationList = reservationList;
     }
@@ -119,21 +130,21 @@ public class ReservationsAction extends ActionSupport implements SessionAware {
     }
 
     public String cancelReservation(){
-        //String result = ActionSupport.INPUT;
-        Users log = (Users) session.get("user");
+        String result = ActionSupport.INPUT;
+        user = (Users) session.get("user");
 
-        if (log == null) {
+        if (user == null) {
             this.addActionError("Merci de vous connecter pour annuler une réservation");
-            //result = ActionSupport.ERROR;
+            result = ActionSupport.ERROR;
         }try {
-            Users users = usersService.getUserById(log.getUser_id());
-            //reservations = service.getById(id);
-            service.deleteById(reservations.getRes_Id());
-            //result = ActionSupport.SUCCESS;
+            reservationList = service.getAllReservationsByUser(user.getUser_id());
+            ServiceStatus status = service.deleteById(reservations.getRes_Id());
+            System.out.println(status.getMessage());
+            result = ActionSupport.SUCCESS;
         }catch (Exception e){
             this.addActionError("la réservation n'existe pas");
         }
-        return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
+        return result;
     }
 
     @Override

@@ -10,6 +10,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -34,6 +35,8 @@ public class UsersAction extends ActionSupport implements SessionAware {
     private boolean reminder;
 
     private Users users;
+
+    List<Boolean> reminders;
 
     private Map<String, Object> session;
 
@@ -91,6 +94,14 @@ public class UsersAction extends ActionSupport implements SessionAware {
 
     public void setUsers(Users users) {
         this.users = users;
+    }
+
+    public List<Boolean> getReminders() {
+        return reminders;
+    }
+
+    public void setReminders(List<Boolean> reminders) {
+        this.reminders = reminders;
     }
 
     public Map<String, Object> getSession() {

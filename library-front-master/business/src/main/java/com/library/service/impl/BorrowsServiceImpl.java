@@ -54,8 +54,8 @@ public class BorrowsServiceImpl implements BorrowsService {
         GetAllBorrowsResponse response = client.findAllBorrows();
         List<BorrowInfo> borrowInfoList = response.getBorrowInfo();
         List<Borrows> borrowsList = new ArrayList<>();
-        for(int i = 0; i < borrowInfoList.size(); i++){
-            Borrows borrows = setBorrows(borrowInfoList.get(i));
+        for(BorrowInfo borrowInfo: borrowInfoList){
+            Borrows borrows = setBorrows(borrowInfo);
             borrowsList.add(borrows);
         }
         return borrowsList;

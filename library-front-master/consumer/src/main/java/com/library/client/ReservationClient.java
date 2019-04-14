@@ -40,4 +40,10 @@ public class ReservationClient extends WebServiceGatewaySupport {
         return  response;
     }
 
+    public GetAllReservationsResponse getALlReservations(){
+        GetAllReservationsRequest request = new GetAllReservationsRequest();
+        GetAllReservationsResponse response = (GetAllReservationsResponse) getWebServiceTemplate().marshalSendAndReceive(request, new SoapActionCallback("http://localhost:8080/ws/getAllReservationsRequest"));
+        return response;
+    }
+
 }

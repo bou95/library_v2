@@ -119,7 +119,7 @@ public class ReservationEndpoint {
             serviceStatus.setMessage("La réservation n'existe pas");
             response.setServiceStatus(serviceStatus);
         }else{
-            service.deleteById(request.getResId());
+            service.deleteById(reservation);
             serviceStatus.setStatusCode("SUCCES");
             serviceStatus.setMessage("La réservation a été supprimée");
             response.setServiceStatus(serviceStatus);

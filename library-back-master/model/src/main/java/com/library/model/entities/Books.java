@@ -30,10 +30,10 @@ public class Books implements Serializable {
     @Column(name = "available")
     private Long available;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "book", fetch=FetchType.EAGER)
     private List<Borrow> borrowList;
 
-    @OneToMany(mappedBy = "book", cascade =CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "book", fetch=FetchType.EAGER)
     private List<Reservation> reservation;
 
     public String getAuthor() {
